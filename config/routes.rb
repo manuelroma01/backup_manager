@@ -1,4 +1,7 @@
 BackupManager::Application.routes.draw do
+  # páginas estáticas
+  get "pages/home"
+
   resources :workstations
 
   # The priority is based upon order of creation:
