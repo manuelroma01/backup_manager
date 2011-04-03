@@ -1,0 +1,21 @@
+<% title "Workstations" %>
+
+<table>
+  <tr>
+    <th>Tag</th>
+    <th>IP</th>
+    <th>mac</th>
+  </tr>
+  <% for workstation in @workstations %>
+    <tr>
+      <td><%= workstation.tag %></td>
+      <td><%= workstation.ip %></td>
+      <td><%= workstation.mac %></td>
+      <td><%= link_to "Show", workstation %></td>
+      <td><%= link_to "Edit", edit_workstation_path(workstation) %></td>
+      <td><%= link_to "Destroy", workstation, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Workstation", new_workstation_path %></p>

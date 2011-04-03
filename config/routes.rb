@@ -1,4 +1,6 @@
 BackupManager::Application.routes.draw do
+  resources :workstations
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

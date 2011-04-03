@@ -1,0 +1,22 @@
+<% title "Workstation" %>
+
+<p>
+  <strong>Tag:</strong>
+  <%= @workstation.tag %>
+</p>
+
+<p>
+  <strong>IP:</strong>
+  <%= @workstation.ip %>
+</p>
+
+<p>
+  <strong>mac:</strong>
+  <%= @workstation.mac %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_workstation_path(@workstation) %> |
+  <%= link_to "Destroy", @workstation, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", workstations_path %>
+</p>

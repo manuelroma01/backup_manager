@@ -7,6 +7,18 @@ gem 'rails', '3.0.5'
 
 gem 'sqlite3'
 
+group :development do
+  gem 'nifty-generators'
+end
+
+group :test do
+  gem 'mocha' # dep nifty-generators
+  gem 'nifty-generators'
+end
+
+
+# porsi:
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
