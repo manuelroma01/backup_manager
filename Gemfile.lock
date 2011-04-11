@@ -30,6 +30,8 @@ GEM
       activesupport (= 3.0.5)
     activesupport (3.0.5)
     arel (2.0.9)
+    authlogic (2.1.6)
+      activesupport
     autotest (4.4.6)
       ZenTest (>= 4.4.1)
     autotest-rails (4.1.0)
@@ -102,6 +104,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  authlogic
   autotest
   autotest-rails
   factory_girl_rails
