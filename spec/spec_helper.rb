@@ -10,7 +10,6 @@ end
 
 Spork.each_run do
   # This code will be run each time you run your specs.
-  
 end
 
 # --- Instructions ---
@@ -31,6 +30,10 @@ end
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
+
+# para usar authlogic con rspec
+require 'authlogic/test_case'
+include Authlogic::TestCase
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.

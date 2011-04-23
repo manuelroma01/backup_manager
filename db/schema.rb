@@ -23,9 +23,9 @@ ActiveRecord::Schema.define(:version => 20110411215645) do
   end
 
   create_table "workstations", :force => true do |t|
-    t.string   "tag",        :limit => 10, :null => false
-    t.string   "ip",         :limit => 15, :null => false
-    t.string   "mac",        :limit => 17, :null => false
+    t.string   "tag",         :limit => 10, :null => false
+    t.string   "ip_address",  :limit => 15, :null => false
+    t.string   "mac_accress", :limit => 17, :null => false
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
