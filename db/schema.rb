@@ -10,17 +10,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110411215645) do
+ActiveRecord::Schema.define(:version => 20110423232254) do
 
   create_table "users", :force => true do |t|
-    t.string   "username",          :limit => 20, :null => false
-    t.string   "email",             :limit => 50, :null => false
-    t.string   "crypted_password"
-    t.string   "password_salt"
-    t.string   "persistence_token"
+    t.string   "email",                                 :default => "", :null => false
+    t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.integer  "sign_in_count",                         :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "username"
   end
+
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
   create_table "workstations", :force => true do |t|
     t.string   "tag",         :limit => 10, :null => false

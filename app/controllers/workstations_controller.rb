@@ -1,4 +1,7 @@
 class WorkstationsController < ApplicationController
+  # restringit acceso a usuarios logeados
+  before_filter :authenticate_user!
+  
   def index
     @workstations = Workstation.all
   end
