@@ -1,4 +1,7 @@
 BackupManager::Application.routes.draw do
+  get "users/show"
+  get "users/index"
+
   devise_for :users
   resources :users
   resources :workstations

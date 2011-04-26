@@ -1,30 +1,29 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.5'
-
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
+gem 'rails', '>= 3.0.5'
 gem 'sqlite3-ruby', :require => 'sqlite3'
-gem 'devise'
+gem 'devise', '>= 1.3.3'
+gem 'jquery-rails', '>= 0.2.7'
 
 group :development do
   gem 'nifty-generators'
-  gem 'rspec-rails'
+  gem 'rspec-rails', '>= 2.5.0'
   gem 'annotate-models'
 end
 
 group :test do
   gem 'mocha' # dep nifty-generators
   gem 'nifty-generators'
-  gem 'rspec'
   gem 'webrat'
+  gem 'rspec-rails', '>= 2.5.0'
   gem 'autotest'
   gem 'autotest-rails'
   gem 'spork'
-  gem 'factory_girl_rails'
+  gem 'factory_girl_rails', '>= 1.1.beta1'
+  gem 'cucumber-rails', '>= 0.4.1'
+  gem 'capybara', '>= 0.4.1.2'
+  gem 'database_cleaner', '>= 0.6.7'
 end
-
 
 # porsi:
 

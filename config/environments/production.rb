@@ -9,8 +9,12 @@ BackupManager::Application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
-  # para devise
+  # Action mailer config - para devise
   config.action_mailer.default_url_options = { :host => 'backup_manager.creal.cat' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_error = false
+  config.action_mailer.default :charset => 'utf-8'
 
   # Specifies the header that your server uses for sending files
   config.action_dispatch.x_sendfile_header = "X-Sendfile"
