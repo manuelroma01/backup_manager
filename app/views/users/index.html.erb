@@ -1,4 +1,6 @@
-<h1>Users#index</h1>
+<% title "Usuarios" %>
 <% @users.each do |user| %>
-  <p>User: <%= link_to user.username, user %> </p>
+  <ul>
+    <li>User: <%= link_to user.username, user %> </li>
+  </ul>
 <% end %>
