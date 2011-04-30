@@ -11,7 +11,7 @@ puts '--------------------------------------'
 user = User.create!(
   :username => 'seeduser',
   :email => 'seeduser@test.com',
-  :password => 'porfaaa',
-  :password_confirmation => 'porfaaa'
+  :password => 'porfaplis',
+  :password_confirmation => 'porfaplis'
 )
 puts 'Creado: ' << user.username

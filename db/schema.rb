@@ -22,6 +22,9 @@ ActiveRecord::Schema.define(:version => 20110423232254) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.integer  "failed_attempts",                       :default => 0
+    t.string   "unlock_token"
+    t.datetime "locked_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "username"
@@ -29,6 +32,7 @@ ActiveRecord::Schema.define(:version => 20110423232254) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["unlock_token"], :name => "index_users_on_unlock_token", :unique => true
 
   create_table "workstations", :force => true do |t|
     t.string   "tag",         :limit => 10, :null => false

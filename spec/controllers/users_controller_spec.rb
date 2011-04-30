@@ -3,18 +3,28 @@ require 'spec_helper'
 describe UsersController do
   render_views
 
-  describe "GET 'index'" do
-    describe "for non-signed-in users" do
-      it "deny access" do
-        get :index
-        response.should redirect_to(new_user_session_path)
-        flash[:alert].should =~ /sign in/i
-      end
+  # ninguna operación permitida para usuarios no autenticados
+  describe "for non-signed-in users" do
+    it "should deny access to :index" do get :index end
+    it "should deny access to :show" do get :show, :id => 1 end
+    it "should deny access to :new" do get :new end
+#    it "should deny access to :create" do post :create end
+      
+    after(:each) do
+      response.should redirect_to(new_user_session_path)
+      flash[:alert].should =~ /sign in/i
+    end
+  end      
+
+  # listar usuarios
+  describe "for signed-in users" do
+    before(:each) do
+      @user = Factory.create(:user, :username => 'testuser', :email => "test@user.com")
+      sign_in @user
     end
     
-    describe "for signed-in users" do
-      before (:each) do
-        @user = Factory.create(:user, :username => 'testuser', :email => "test@user.com")
+    describe "GET 'index'" do
+      before(:each) do
         second = Factory(:user, :username => 'second', :email => "secont@test.cat")
         third = Factory(:user, :username => 'third', :email => "third@test.net")
  
@@ -23,7 +33,6 @@ describe UsersController do
           @users << Factory(:user)
         end
         
-        sign_in @user
         get :index
       end
       
@@ -37,21 +46,10 @@ describe UsersController do
       
       it "should paginate users" do pending "falta gem will paginate" end
     end 
-  end
 
-  describe "GET 'show'" do
-    describe "for non-signed-in users" do
-      it "deny access" do
-        get :show, :id => 1
-        response.should redirect_to(new_user_session_path)
-        flash[:alert].should =~ /sign in/i
-      end
-    end
-    
-    describe "for signed-in users" do
-      before (:each) do
-        @user = Factory.create(:user, :username => 'testuser', :email => "test@user.com")
-        sign_in @user
+    # mostrar datos de usuario
+    describe "GET 'show'" do
+      before(:each) do
         get :show, :id => @user.id
       end
       
@@ -64,6 +62,41 @@ describe UsersController do
         response.should have_selector("p", :content => "e-mail: #{@user.email}")
       end
     end
-  end
 
+  # nuevo usuario
+    describe "GET :new" do
+      before(:each) do
+        get :new
+      end
+      
+      it "should be successful" do response.should be_success end
+      it "should have the right title" do response.should have_selector("title", :content => "Nuevo usuario") end
+    end
+    
+# ---
+
+  # crear usuario
+=begin
+  describe "POST :create" do
+    describe "for non-signed-in users" do
+      it "deny access" do
+        post :create
+        response.should redirect_to(new_user_session_path)
+        flash[:alert].should =~ /sign in/i
+      end
+    end
+  end
+  
+  describe "for signed-in users" do
+    before(:each) do
+      @user = Factory.create(:user, :username => 'testuser', :email => "test@user.com")
+      sign_in @user
+      post :create
+    end
+    
+    #it "should be successful" do response.should be_success end
+    #it "should have the rigth title" do response.should have_selector("title", :content => "Nuevo usuario") end
+  end 
+=end
+  end
 end
