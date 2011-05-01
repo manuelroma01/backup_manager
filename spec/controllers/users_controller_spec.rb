@@ -8,6 +8,7 @@ describe UsersController do
     it "should deny access to :index" do get :index end
     it "should deny access to :show" do get :show, :id => 1 end
     it "should deny access to :new" do get :new end
+    it "should deny access to :edit" do get :edit, :id => 1 end
 #    it "should deny access to :create" do post :create end
       
     after(:each) do
@@ -40,7 +41,7 @@ describe UsersController do
 
       it "should have an element for each user" do
         @users[0..2].each do |user|
-          response.should have_selector("li", :content => user.username)
+          response.should have_selector("td", :content => user.username)
         end
       end
       
@@ -63,7 +64,7 @@ describe UsersController do
       end
     end
 
-  # nuevo usuario
+    # nuevo usuario
     describe "GET :new" do
       before(:each) do
         get :new
@@ -71,11 +72,22 @@ describe UsersController do
       
       it "should be successful" do response.should be_success end
       it "should have the right title" do response.should have_selector("title", :content => "Nuevo usuario") end
+      # por terminar, tras acabar :edit
     end
     
-# ---
+    describe "GET :edit" do
+      before(:each) do
+        get :edit, :id => @user.id
+      end
+      
+      it "should be successful" do response.should be_success end
+      it "should have the right title" do
+        response.should have_selector("title", :content => "Editar usuario: #{@user.username}")
+      end
+    end
 
-  # crear usuario
+    
+  # crear usuario (más adelante)
 =begin
   describe "POST :create" do
     describe "for non-signed-in users" do
