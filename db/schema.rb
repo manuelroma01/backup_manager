@@ -37,10 +37,13 @@ ActiveRecord::Schema.define(:version => 20110423232254) do
   create_table "workstations", :force => true do |t|
     t.string   "tag",         :limit => 10, :null => false
     t.string   "ip_address",  :limit => 15, :null => false
-    t.string   "mac_accress", :limit => 17, :null => false
+    t.string   "mac_address", :limit => 17, :null => false
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "workstations", ["tag"], :name => "index_workstations_on_tag"
+  add_index "workstations", ["user_id"], :name => "index_workstations_on_user_id"
 
 end

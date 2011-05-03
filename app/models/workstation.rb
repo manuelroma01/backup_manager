@@ -15,6 +15,10 @@
 class Workstation < ActiveRecord::Base
   attr_accessible :tag, :ip_address, :mac_address
   
-  validates :tag, :presence => true
-  validates :ip_address, :presence => true
+  validates :tag, :presence => true,
+    :uniqueness => true
+  validates :ip_address, :presence => true,
+    :uniqueness => true
+  validates :mac_address, :presence => true,
+    :uniqueness => true
 end

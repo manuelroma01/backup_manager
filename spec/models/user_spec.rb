@@ -30,7 +30,7 @@ describe User do
     end
   end
   
-  # validación formato
+  # validación formato atributos
   describe "validates attr format" do
     it "should limit usernames to < 30 characters" do
       long_username = "a" * 31
