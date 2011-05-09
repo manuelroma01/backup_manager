@@ -9,8 +9,8 @@
   <% for workstation in @workstations %>
     <tr>
       <td><%= workstation.tag %></td>
-      <td><%= workstation.ip %></td>
-      <td><%= workstation.mac %></td>
+      <td><%= workstation.ip_address %></td>
+      <td><%= workstation.mac_address %></td>
       <td><%= link_to "Show", workstation %></td>
       <td><%= link_to "Edit", edit_workstation_path(workstation) %></td>
       <td><%= link_to "Destroy", workstation, :confirm => 'Are you sure?', :method => :delete %></td>

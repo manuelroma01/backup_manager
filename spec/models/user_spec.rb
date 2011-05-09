@@ -56,7 +56,7 @@ describe User do
       end
     end
     
-    it "should reject duplicate email addresses" do
+    it "should reject duplicated email addresses" do
       test_user = User.create!(@user_attr)
       User.new(@user_attr_2.merge(:email => test_user.email)).should_not be_valid
     end

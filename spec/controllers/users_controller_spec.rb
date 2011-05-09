@@ -3,6 +3,10 @@ require 'spec_helper'
 describe UsersController do
   render_views
 
+  before(:each) do
+    @user = Factory.create(:user, :username => 'testuser', :email => "test@user.com")
+  end
+
   # ninguna operación permitida para usuarios no autenticados
   describe "for non-signed-in users" do
     it "should deny access to :index" do get :index end
@@ -10,12 +14,10 @@ describe UsersController do
     it "should deny access to :new" do get :new end
     it "should deny access to :edit" do get :edit, :id => 1 end
     it "should deny access to :update" do 
-      @user = Factory.create(:user, :username => 'testuser', :email => "test@user.com")
       put :update, :id => 1, :user => @user
     end
     it "should deny acces to :delete" do delete :destroy, :id => 1 end
     it "should deny access to :create" do
-      @user = Factory(:user)
       post :create, :user => @user
     end
       
@@ -25,13 +27,13 @@ describe UsersController do
     end
   end      
 
-  # listar usuarios
+  # operaciones para usuarios autenticados
   describe "for signed-in users" do
     before(:each) do
-      @user = Factory.create(:user, :username => 'testuser', :email => "test@user.com")
       sign_in @user
     end
-    
+
+    # listar usuarios    
     describe "GET 'index'" do
       before(:each) do
         second = Factory(:user, :username => 'second', :email => "secont@test.cat")
