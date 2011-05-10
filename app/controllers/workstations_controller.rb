@@ -1,9 +1,8 @@
 class WorkstationsController < ApplicationController
-  # restringit acceso a usuarios logeados
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!   # acceso a usuarios logeados
   
   def index
-    @workstations = Workstation.all
+    @workstations = Workstation.paginate(:page => params[:page])
   end
 
   def show

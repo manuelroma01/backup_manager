@@ -1,5 +1,7 @@
 <% title "Workstations" %>
 
+<%= will_paginate %>
+
 <table>
   <tr>
     <th>Tag</th>
@@ -17,5 +19,7 @@
     </tr>
   <% end %>
 </table>
+
+<%= will_paginate %>
 
 <p><%= link_to "New Workstation", new_workstation_path %></p>

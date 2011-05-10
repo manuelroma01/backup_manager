@@ -7,7 +7,7 @@ Factory.define :user do |u|
 end
 
 Factory.define :workstation do |ws|
-  ws.tag 'www.google.com'
-  ws.ip_address '209.85.146.104'
-  ws.mac_address '20:cf:30:e8:4b:4c'
+  ws.sequence(:tag) { |n| "tag#{n}" }
+  ws.sequence(:ip_address) { |n| "#{rand(255)}.#{rand(255)}.#{rand(255)}.#{rand(255)}" }
+  ws.sequence(:mac_address) { |n| "#{(rand(230)+20).to_s(16)}-#{(rand(230)+20).to_s(16)}-#{(rand(230)+20).to_s(16)}-#{(rand(230)+20).to_s(16)}-#{(rand(230)+20).to_s(16)}-#{(rand(230)+20).to_s(16)}" }
 end
