@@ -1,19 +1,7 @@
-<% title "Workstation" %>
+<% title "Workstation: #{@workstation.tag}" %>
 
-<p>
-  <strong>Tag:</strong>
-  <%= @workstation.tag %>
-</p>
-
-<p>
-  <strong>IP:</strong>
-  <%= @workstation.ip %>
-</p>
-
-<p>
-  <strong>mac:</strong>
-  <%= @workstation.mac %>
-</p>
+<p>ip: <%= @workstation.ip_address %></p>
+<p>mac: <%= @workstation.mac_address %></p>
 
 <p>
   <%= link_to "Edit", edit_workstation_path(@workstation) %> |

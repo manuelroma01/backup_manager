@@ -29,9 +29,11 @@ class WorkstationsController < ApplicationController
   def update
     @workstation = Workstation.find(params[:id])
     if @workstation.update_attributes(params[:workstation])
-      redirect_to @workstation, :notice  => "Successfully updated workstation."
+      flash[:success] = "Workstation actualizada"
+      redirect_to @workstation
     else
-      render :action => 'edit'
+      @workstation.reload
+      render 'edit'
     end
   end
 

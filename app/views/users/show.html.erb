@@ -3,4 +3,8 @@
 <p>Username: <%= @user.username %></p>
 <p>e-mail: <%= @user.email %></p>
 
-<%= link_to "List", users_path %>
+<p>
+  <%= link_to "Edit", edit_user_path(@user) %> |
+  <%= link_to "Destroy", @user, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", users_path %>
+</p>
