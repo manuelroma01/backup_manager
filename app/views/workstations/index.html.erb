@@ -7,6 +7,7 @@
     <th>Tag</th>
     <th>IP</th>
     <th>mac</th>
+    <th>Estado</th>
     <th colspan="3" >Operaciones</th>
   </tr>
   <% for workstation in @workstations %>
@@ -14,6 +15,9 @@
       <td><%= workstation.tag %></td>
       <td><%= workstation.ip_address %></td>
       <td><%= workstation.mac_address %></td>
+      <td>
+        <%= workstation.turned_on? ? "ON" : "OFF" %>
+      </td>
       <td><%= link_to "Show", workstation %></td>
       <td><%= link_to "Edit", edit_workstation_path(workstation) %></td>
       <td><%= link_to "Destroy", workstation, :confirm => 'Are you sure?', :method => :delete %></td>
