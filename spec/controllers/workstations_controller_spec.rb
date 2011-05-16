@@ -28,21 +28,17 @@ describe WorkstationsController do
   # operaciones permitidas para usuarios autenticados
   describe "for signed-in users" do
     before(:each) do
-      @user = Factory.create(:user)
+      @user = Factory(:user)
       sign_in @user
-      @ws = Factory.create(:workstation)
+      @ws = Factory(:workstation_local)
     end
     
     # listar workstations
     describe 'GET :index' do
       before(:each) do
-        @ws_google = Factory(:workstation, :tag => 'google.com',
-          :ip_address => '209.85.147.103', :mac_address => '11-bb-33-44-55-66')
-        @ws_2 = Factory(:workstation, :tag => 'second',
-          :ip_address => '172.20.32.170', :mac_address => '11-22-33-44-55-66')
-        ws_3 = Factory(:workstation, :tag => 'third',
-          :ip_address => '172.20.32.158', :mac_address => '22-33-44-55-77-aa')
-        @wss = [@ws, @ws_google, @ws_2, ws_3]
+        @ws_google = Factory(:workstation_google)
+        @ws_creal = Factory(:workstation_creal)
+        @wss = [@ws, @ws_google, @ws_creal]
         10.times do
           @wss << Factory(:workstation)
         end
@@ -75,7 +71,7 @@ describe WorkstationsController do
     end
     
     # mostrar datos de workstation
-    describe "GET 'show'" do
+    describe "GET :show" do
       before(:each) do
         get :show, :id => @ws.id
       end

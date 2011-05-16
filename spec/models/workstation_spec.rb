@@ -73,10 +73,10 @@ describe Workstation do
   end
   
   # ping
-  describe "worktation turned_on?" do
+  describe "worktation online?" do
     it "should return true if computer is turned on" do
       @ws = Workstation.create!(@ws_attr)
-      @ws.turned_on?.should be_true
+      @ws.online?.should be_true
     end
   end
 end

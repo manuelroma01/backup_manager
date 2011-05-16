@@ -5,6 +5,8 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'devise', '>= 1.3.3'
 gem 'jquery-rails', '>= 0.2.7'
 gem 'will_paginate', '>=3.0.pre2'
+gem 'net-ping', '>=1.5.0'
+# gem 'haml', '>=3.1.1'
 
 group :development do
   gem 'nifty-generators'

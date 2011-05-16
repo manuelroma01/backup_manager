@@ -16,7 +16,7 @@
       <td><%= workstation.ip_address %></td>
       <td><%= workstation.mac_address %></td>
       <td>
-        <%= workstation.turned_on? ? "ON" : "OFF" %>
+        <%= workstation.online? ? "ON" : "OFF" %>
       </td>
       <td><%= link_to "Show", workstation %></td>
       <td><%= link_to "Edit", edit_workstation_path(workstation) %></td>
