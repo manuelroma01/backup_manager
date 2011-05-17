@@ -13,12 +13,6 @@ describe Workstation do
       :ip_address => '193.144.6.2',
       :mac_address => '54-87-e6-8d-52-10'
     }
-    
-    @ws_attr_false = {
-      :tag => 'fake_ws',
-      :ip_address => '125.5.5.1',
-      :mac_address => '54-87-55-8d-52-10'
-    }
   end
   
   it "should create a new instance given valid attributes" do
@@ -70,13 +64,5 @@ describe Workstation do
       test_ws = Workstation.create!(@ws_attr)
       Workstation.new(@ws_attr_2.merge(:mac_address => test_ws.mac_address)).should_not be_valid
     end   
-  end
-  
-  # ping
-  describe "worktation turned_on?" do
-    it "should return true if computer is turned on" do
-      @ws = Workstation.create!(@ws_attr)
-      @ws.turned_on?.should be_true
-    end
   end
 end

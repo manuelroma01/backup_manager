@@ -36,14 +36,12 @@ describe WorkstationsController do
     # listar workstations
     describe 'GET :index' do
       before(:each) do
-        @ws_google = Factory(:workstation, :tag => 'google.com',
-          :ip_address => '209.85.147.103', :mac_address => '11-bb-33-44-55-66')
-        @ws_2 = Factory(:workstation, :tag => 'second',
+        ws_2 = Factory(:workstation, :tag => 'second',
           :ip_address => '172.20.32.170', :mac_address => '11-22-33-44-55-66')
         ws_3 = Factory(:workstation, :tag => 'third',
           :ip_address => '172.20.32.158', :mac_address => '22-33-44-55-77-aa')
-        @wss = [@ws, @ws_google, @ws_2, ws_3]
-        10.times do
+        @wss = [@ws, ws_2, ws_3]
+        30.times do
           @wss << Factory(:workstation)
         end
         get :index
@@ -56,14 +54,6 @@ describe WorkstationsController do
         @wss[0..2].each do |ws|
           response.should have_selector("td", :content => ws.tag)
         end
-      end
-      
-      it "should show the google server as connected" do
-        response.should have_selector("td", :content => "ON")
-      end
-        
-      it "should show the fake server as connected" do
-        response.should have_selector("td", :content => "OFF")
       end
       
       it "should paginate workstations" do
@@ -100,7 +90,7 @@ describe WorkstationsController do
       it "should have the right title" do response.should have_selector("title", :content => "Nueva workstation") end
     end
     
-    # crear usuario
+        # crear usuario
     describe "POST :create" do
       # con attr incorrectos
       describe "failure" do

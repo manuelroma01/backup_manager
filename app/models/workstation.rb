@@ -17,7 +17,6 @@ class Workstation < ActiveRecord::Base
   
   @ip_regex = /^([1-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(\.([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])){3}$/
   @mac_regex = /^([0-9a-fA-F]{2}[:-]){5}[0-9a-fA-F]{2}$/i
-  @@per_page = 10
   
   validates :tag, :presence => true,
     :uniqueness => true
@@ -27,9 +26,4 @@ class Workstation < ActiveRecord::Base
   validates :mac_address, :presence => true,
     :uniqueness => true,
     :format => { :with => @mac_regex }
-    
-  # funciones públicas    
-  def turned_on?
-    return Ping.pingecho(self.ip_address, 2, 80)
-  end
 end
