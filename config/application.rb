@@ -1,6 +1,12 @@
 require File.expand_path('../boot', __FILE__)
+<<<<<<< HEAD
 
 require 'rails/all'
+=======
+require 'rails/all'
+require 'net/ping'
+#require '../lib/ping'
+>>>>>>> 22a9aa1fac2cb0f7a034b4908285898905fda238
 
 # If you have a Gemfile, require the gems listed there, including any gems
 # you've limited to :test, :development, or :production.
