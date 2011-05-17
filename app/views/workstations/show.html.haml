@@ -1,0 +1,12 @@
+- title "Workstation: #{@workstation.tag}"
+
+%p= "IP: #{@workstation.ip_address}"
+%p= "mac: #{@workstation.mac_address}"
+
+%p
+  = link_to "Edit", edit_workstation_path(@workstation)
+  ||
+  = link_to "Destroy" @workstation, :confirm => 'De veras?', :method => :delete
+  ||
+  = link_to "View all", workstations_path
+
