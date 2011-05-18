@@ -38,8 +38,7 @@ class Workstation < ActiveRecord::Base
     
   # funciones públicas    
   def online?
-    #TODO - transformar a ping ldap, es para uso interno
-    find_ws = Net::Ping::External.new(self.ip_address)
+    find_ws = Net::Ping::External.new(self.ip_address, timeout=2)
     return find_ws.ping?
   end
 >>>>>>> 22a9aa1fac2cb0f7a034b4908285898905fda238

@@ -1,0 +1,9 @@
+= semantic_form_for(@workstation) do |f|
+  = f.inputs :title => 'Workstation data' do
+    = f.input :tag
+    = f.input :ip_address
+    = f.input :mac_address
+    
+  = f.buttons do
+    = f.commit_button :label => 'Aceptar'
+
