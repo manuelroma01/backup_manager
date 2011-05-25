@@ -1,7 +1,14 @@
+/* colores: desiderium en kooler.adobe.com
+  azul oscuro: #131B2E
+  azul grisaceo: #515B5D
+  beige: #BEBA8A
+  amarillo: #F2CA50
+  rojo: #D92526
+*/
+
+/* general */
 body {
-  background-color: #4B7399;
-  font-family: Verdana, Helvetica, Arial;
-  font-size: 14px;
+  background-color: #131B2E;
 }
 
 a img {
@@ -9,24 +16,46 @@ a img {
 }
 
 a {
-  color: #0000FF;
+  color: #D92526;
+  text-decoration: none;
 }
 
-.clear {
-  clear: both;
-  height: 0;
-  overflow: hidden;
+a:hover {
+  text-decoration: underline;  
 }
 
-#container {
-  width: 75%;
-  margin: 0 auto;
+.container_24 {
   background-color: #FFF;
   padding: 20px 40px;
-  border: solid 1px black;
   margin-top: 20px;
 }
 
+nav ul {
+  list-style-type: none;  
+}
+/* fin general */
+
+/* cabecera */
+nav#main {
+  background-color: #515B5D;
+}
+
+nav#main li {
+  display: inline-block;
+}
+
+nav#main li a {
+  color: #BEBA8A;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+nav#main li a:hover {
+  background-color: #232B3E;
+}
+/* fin cabecera */
+
+/* por clasificar */
 #flash_notice, #flash_error, #flash_alert {
   padding: 5px 8px;
   margin: 10px 0;
