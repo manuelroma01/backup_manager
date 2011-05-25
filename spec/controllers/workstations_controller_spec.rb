@@ -38,10 +38,8 @@ describe WorkstationsController do
       before(:each) do
         @ws_google = Factory(:workstation_google)
         @ws_creal = Factory(:workstation_creal)
-        @wss = [@ws, @ws_google, @ws_creal]
-        10.times do
-          @wss << Factory(:workstation)
-        end
+        @ws_false = Factory(:workstation_false)
+        @wss = [@ws, @ws_google, @ws_creal, @ws_false]
         get :index
       end
       
@@ -49,7 +47,7 @@ describe WorkstationsController do
       it "should have the right title" do response.should have_selector("title", :content => "Workstations") end
         
       it "should have an element for each workstation" do
-        @wss[0..2].each do |ws|
+        @wss[0..3].each do |ws|
           response.should have_selector("td", :content => ws.tag)
         end
       end
@@ -63,6 +61,11 @@ describe WorkstationsController do
       end
       
       it "should paginate workstations" do
+        10.times do
+          @wss << Factory(:workstation)
+        end
+        get :index
+        
         response.should have_selector("div.pagination")
         response.should have_selector("span.disabled", :content => "Previous")
         response.should have_selector("a", :href => "/workstations?page=2", :content => "2")
@@ -81,7 +84,7 @@ describe WorkstationsController do
       it "should find the right workstation" do assigns(:workstation.should) == @ws end
       
       it "should include the workstation's data" do
-        response.should have_selector("p", :content => "ip: #{@ws.ip_address}")
+        response.should have_selector("p", :content => "IP: #{@ws.ip_address}")
         response.should have_selector("p", :content => "mac: #{@ws.mac_address}")
       end
     end
