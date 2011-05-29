@@ -14,10 +14,15 @@
     .container_24
       = render 'layouts/header'
 
-      - flash.each do |name, msg|
-        = content_tag :div, msg, :id => "flash_#{name}"
-        
-      = content_tag :h1, yield(:title) if show_title?
+      .grid_24
+        - flash.each do |name, msg|
+          = content_tag :div, msg, :id => "flash_#{name}"
+      .clear
+
+      .grid_24        
+        = content_tag :h2, yield(:title) if show_title?
+      .clear
+      
       %section
         = yield
 

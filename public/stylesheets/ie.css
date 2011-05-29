@@ -1,0 +1,3 @@
+/* Internet Explorer fixes */
+#content .single-post { padding-top: 10px; }
+#content .single-post .box { padding-top: 17px; padding-bottom: 0; }

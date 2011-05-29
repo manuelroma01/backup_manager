@@ -1,17 +1,17 @@
 %header
   .grid_24
-    %h1 CREAL manager
+    %h1#site-header CREAL manager
   .clear
   
-  .grid_16
+  .grid_18
     %nav#main
       %ul
         %li= link_to "Home", root_path
         %li= link_to "Workstations", workstations_path
         %li= link_to "Users", users_path
 
-  .grid_8
-    %p
+  .grid_6
+    %nav#sign
       - if user_signed_in?
         = "Signed in as #{current_user.username}"
         = link_to "Sign out", destroy_user_session_path

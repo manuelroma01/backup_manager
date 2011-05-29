@@ -1,22 +1,39 @@
-/* colores: desiderium en kooler.adobe.com
-  azul oscuro: #131B2E
-  azul grisaceo: #515B5D
-  beige: #BEBA8A
-  amarillo: #F2CA50
-  rojo: #D92526
+/*
+background verde: #5C9B59
+background naranja (barras): #E96508
+titulos verde: #6BA743
+links: #CC6600
 */
 
 /* general */
 body {
-  background-color: #131B2E;
+  background-color: #5C9B59;
 }
 
+footer p {
+  background-color: #E96508;
+  text-align: center;
+  color: #FFF;
+}
+
+/* titulos */
+h1 {
+  font-size: 20px;
+}
+
+h2 {
+  margin-bottom: 5px;
+  font-size: 18px;
+  color: #6BA743;
+}  
+
+/* enlaces */
 a img {
   border: none;
 }
 
 a {
-  color: #D92526;
+  color: #CC6600;
   text-decoration: none;
 }
 
@@ -24,36 +41,71 @@ a:hover {
   text-decoration: underline;  
 }
 
+/* contenedor */
 .container_24 {
   background-color: #FFF;
-  padding: 20px 40px;
   margin-top: 20px;
+  padding: 10px;
+}
+
+/* barras */
+nav {
+  background-color: #E96508;
+  font-size: 14px;
 }
 
 nav ul {
   list-style-type: none;  
 }
+
+nav li {
+  display: inline-block;
+  margin: 0;
+}
+
+nav a {
+  color: #DDD;
+  padding: 10px;
+}
+
+nav a:hover {
+  color: #FFF;
+  text-decoration: none;
+}
+
 /* fin general */
 
 /* cabecera */
-nav#main {
-  background-color: #515B5D;
+h1#site-header {
 }
 
-nav#main li {
-  display: inline-block;
-}
-
-nav#main li a {
-  color: #BEBA8A;
-  text-decoration: none;
-  font-size: 14px;
-}
-
-nav#main li a:hover {
-  background-color: #232B3E;
+nav#sign {
+  text-align: right;
 }
 /* fin cabecera */
+
+/* forms */
+form ol {
+  list-style-type: none;
+}
+
+form fieldset.inputs li label {
+  display: inline-block;
+  width: 150px;
+  text-align: right;
+  margin-right: 20px;
+}
+
+form fieldset.inputs li input {
+  display: inline-block;
+  text-align: left;
+}
+
+form fieldset.buttons li {
+  text-align: center;
+}
+
+/* fin forms */
 
 /* por clasificar */
 #flash_notice, #flash_error, #flash_alert {
