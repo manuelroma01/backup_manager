@@ -1,27 +1,33 @@
 - title "Workstations"
 
-= will_paginate
+.grid_24
+  = will_paginate
+.clear
 
-%table
-  %tr
-    %th Tag
-    %th IP
-    %th mac
-    %th Estado
-    %th{:colspan => 3} Operaciones
-    
-  - for workstation in @workstations
+.grid_24
+  %table
     %tr
-      %td= workstation.tag
-      %td= workstation.ip_address
-      %td= workstation.mac_address
-      %td= workstation.online? ? "ON" : "OFF"
-      %td= link_to "Show", workstation
-      %td= link_to "Edit", edit_workstation_path(workstation)
-      %td= link_to "Destroy", workstation, :confirm => "De veras?", :method => :delete
+      %th Tag
+      %th IP
+      %th mac
+      %th{:colspan => 3} Operaciones
       
-= will_paginate
+    - for workstation in @workstations
+      %tr
+        %td= workstation.tag
+        %td= workstation.ip_address
+        %td= workstation.mac_address
+        %td= link_to "Show", workstation
+        %td= link_to "Edit", edit_workstation_path(workstation)
+        %td= link_to "Destroy", workstation, :confirm => "De veras?", :method => :delete
+.clear
 
-%p
-  = link_to "New workstation", new_workstation_path
-  
+.grid_24
+  = will_paginate
+.clear
+
+.grid_24
+  %nav#actions
+    %ul
+      %li= link_to "New workstation", new_workstation_path
+.clear

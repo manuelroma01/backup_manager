@@ -1,12 +1,16 @@
 - title "Workstation: #{@workstation.tag}"
 
-%p= "IP: #{@workstation.ip_address}"
-%p= "mac: #{@workstation.mac_address}"
+.grid_24
+  %ul
+    %li= "IP: #{@workstation.ip_address}"
+    %li= "mac: #{@workstation.mac_address}"
+    %li= "Estado #{@workstation.online? ? 'ON' : 'OFF'}"
+.clear
 
-%p
-  = link_to "Edit", edit_workstation_path(@workstation)
-  ||
-  = link_to "Destroy", @workstation, :confirm => 'De veras?', :method => :delete
-  ||
-  = link_to "View all", workstations_path
-
+.grid_24
+  %nav#actions
+    %ul
+      %li= link_to "Edit", edit_workstation_path(@workstation)
+      %li= link_to "Destroy", @workstation, :confirm => 'De veras?', :method => :delete
+      %li= link_to "View all", workstations_path
+.clear
