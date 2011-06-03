@@ -101,6 +101,10 @@ table td {
 nav#sign {
   text-align: right;
 }
+
+nav#paginate {
+  text-align: center;  
+}
 /* fin cabecera */
 
 /* pie */
@@ -129,7 +133,6 @@ form fieldset.inputs li input {
 form fieldset.buttons li {
   text-align: center;
 }
-
 /* fin forms */
 
 /* otros */

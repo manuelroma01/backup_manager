@@ -1,10 +1,6 @@
 - title "Workstations"
 
 .grid_24
-  = will_paginate
-.clear
-
-.grid_24
   %table
     %tr
       %th Tag
@@ -22,11 +18,10 @@
         %td= link_to "Destroy", workstation, :confirm => "De veras?", :method => :delete
 .clear
 
-.grid_24
-  = will_paginate
-.clear
-
-.grid_24
+.grid_12
+  %nav#paginate
+    = will_paginate
+.grid_12
   %nav#actions
     %ul
       %li= link_to "New workstation", new_workstation_path
