@@ -38,7 +38,7 @@ class Workstation < ActiveRecord::Base
     
   # funciones públicas    
   def online?
-    find_ws = Net::Ping::External.new(self.ip_address, timeout=2)
+    find_ws = Net::Ping::External.new(self.ip_address, timeout=1)
     return find_ws.ping?
   end
 >>>>>>> 22a9aa1fac2cb0f7a034b4908285898905fda238

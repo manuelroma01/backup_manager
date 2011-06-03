@@ -1,12 +1,16 @@
 - title "Usuario: #{@user.username}"
 
-%p Username: #{@user.username}
-%p e-mail: #{@user.email}
+.grid_24
+  %ul
+    %li= "Username: #{@user.username}"
+    %li= "e-mail: #{@user.email}"
+.clear
 
-%p
-  = link_to "Edit", edit_user_path(@user)
-  ||
-  = link_to "Destroy", @user, :confirm => 'Are you sure?', :method => :delete
-  ||
-  = link_to "View All", users_path
+.grid_24
+  %nav#actions
+    %ul
+      %li= link_to "Edit", edit_user_path(@user)
+      %li= link_to "Destroy", @user, :confirm => 'Are you sure?', :method => :delete
+      %li= link_to "View All", users_path
+.clear
 

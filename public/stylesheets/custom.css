@@ -1,0 +1,189 @@
+/*
+background verde: #5C9B59
+background naranja (barras): #E96508
+titulos verde: #6BA743
+links: #CC6600
+*/
+
+/* general */
+body {
+  background-color: #5C9B59;
+}
+
+footer p {
+  background-color: #E96508;
+  text-align: center;
+  color: #FFF;
+}
+
+/* titulos */
+h1 {
+  font-size: 20px;
+}
+
+h2 {
+  margin-bottom: 5px;
+  font-size: 18px;
+  color: #6BA743;
+}  
+
+/* enlaces */
+a img {
+  border: none;
+}
+
+a {
+  color: #CC6600;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;  
+}
+
+/* contenedor */
+.container_24 {
+  background-color: #FFF;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+/* barras */
+nav {
+  background-color: #E96508;
+  font-size: 14px;
+  border-bottom: solid 2px #FFF;
+}
+
+nav ul {
+  list-style-type: none;  
+  margin-bottom: 0;
+}
+
+nav li {
+  display: inline-block;
+  margin: 0;
+}
+
+nav a {
+  color: #DDD;
+  padding: 10px;
+}
+
+nav a:hover {
+  color: #FFF;
+  text-decoration: none;
+}
+
+/* tablas */
+table {
+  width: 100%;
+}
+
+table th {
+  background-color: #DDD;
+  padding: 2px 10px;
+  border: solid 1px #FFF;
+}
+
+table th#operaciones {
+  width: 200px;  
+}
+
+table td {
+  padding: 2px 10px;
+  border: solid 1px #FFF;
+}
+
+/* fin general */
+
+/* cabecera */
+nav#sign {
+  text-align: right;
+}
+
+nav#paginate {
+  text-align: center;  
+}
+/* fin cabecera */
+
+/* pie */
+footer {
+  margin-top: 10px;
+}
+/* fin pie */
+
+/* forms */
+form ol {
+  list-style-type: none;
+}
+
+form fieldset.inputs li label {
+  display: inline-block;
+  width: 150px;
+  text-align: right;
+  margin-right: 20px;
+}
+
+form fieldset.inputs li input {
+  display: inline-block;
+  text-align: left;
+}
+
+form fieldset.buttons li {
+  text-align: center;
+}
+/* fin forms */
+
+/* otros */
+nav#actions {
+  text-align: right;
+end
+
+/* por clasificar */
+#flash_notice, #flash_error, #flash_alert {
+  padding: 5px 8px;
+  margin: 10px 0;
+}
+
+#flash_notice {
+  background-color: #CFC;
+  border: solid 1px #6C6;
+}
+
+#flash_error, #flash_alert {
+  background-color: #FCC;
+  border: solid 1px #C66;
+}
+
+.fieldWithErrors {
+  display: inline;
+}
+
+.error_messages {
+  width: 400px;
+  border: 2px solid #CF0000;
+  padding: 0px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  font-size: 12px;
+}
+
+.error_messages h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 10px;
+  font-size: 12px;
+  margin: 0;
+  background-color: #c00;
+  color: #fff;
+}
+
+.error_messages p {
+  margin: 8px 10px;
+}
+
+.error_messages ul {
+  margin: 0;
+}
