@@ -138,12 +138,17 @@ form fieldset.buttons li {
 /* otros */
 nav#actions {
   text-align: right;
-end
+}
 
 /* por clasificar */
-#flash_notice, #flash_error, #flash_alert {
+#flash_success, #flash_notice, #flash_error, #flash_alert {
   padding: 5px 8px;
   margin: 10px 0;
+}
+
+#flash_success {
+  background-color: #CFC;
+  border: solid 1px #6C6;
 }
 
 #flash_notice {
