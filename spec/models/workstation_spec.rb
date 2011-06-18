@@ -65,15 +65,12 @@ describe Workstation do
       Workstation.new(@ws_attr_2.merge(:mac_address => test_ws.mac_address)).should_not be_valid
     end   
   end
-<<<<<<< HEAD
-=======
   
   # ping
-  describe "worktation online?" do
+  describe "workstation online?" do
     it "should return true if computer is turned on" do
       @ws = Workstation.create!(@ws_attr)
       @ws.online?.should be_true
     end
   end
->>>>>>> 22a9aa1fac2cb0f7a034b4908285898905fda238
 end

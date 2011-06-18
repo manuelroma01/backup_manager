@@ -17,14 +17,12 @@ class Workstation < ActiveRecord::Base
   
   @ip_regex = /^([1-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(\.([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])){3}$/
   @mac_regex = /^([0-9a-fA-F]{2}[:-]){5}[0-9a-fA-F]{2}$/i
-<<<<<<< HEAD
-=======
   
   # config will_paginate
   cattr_reader :per_page
   @@per_page = 10
->>>>>>> 22a9aa1fac2cb0f7a034b4908285898905fda238
-  
+
+  # validaciones  
   validates :tag, :presence => true,
     :uniqueness => true
   validates :ip_address, :presence => true,
@@ -33,13 +31,10 @@ class Workstation < ActiveRecord::Base
   validates :mac_address, :presence => true,
     :uniqueness => true,
     :format => { :with => @mac_regex }
-<<<<<<< HEAD
-=======
     
   # funciones públicas    
   def online?
     find_ws = Net::Ping::External.new(self.ip_address, timeout=1)
     return find_ws.ping?
   end
->>>>>>> 22a9aa1fac2cb0f7a034b4908285898905fda238
 end

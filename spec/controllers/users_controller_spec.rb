@@ -75,8 +75,8 @@ describe UsersController do
       it "should find the right user" do assigns(:user.should) == @user end
       
       it "should include the user's data" do
-        response.should have_selector("p", :content => "Username: #{@user.username}")
-        response.should have_selector("p", :content => "e-mail: #{@user.email}")
+        response.should have_selector("li", :content => "Username: #{@user.username}")
+        response.should have_selector("li", :content => "e-mail: #{@user.email}")
       end
     end
 

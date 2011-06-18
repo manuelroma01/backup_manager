@@ -36,26 +36,13 @@ describe WorkstationsController do
     # listar workstations
     describe 'GET :index' do
       before(:each) do
-<<<<<<< HEAD
-        ws_2 = Factory(:workstation, :tag => 'second',
-          :ip_address => '172.20.32.170', :mac_address => '11-22-33-44-55-66')
-        ws_3 = Factory(:workstation, :tag => 'third',
-          :ip_address => '172.20.32.158', :mac_address => '22-33-44-55-77-aa')
-        @wss = [@ws, ws_2, ws_3]
-        30.times do
-=======
         @ws_google = Factory(:workstation_google)
         @ws_creal = Factory(:workstation_creal)
-<<<<<<< HEAD
         @wss = [@ws, @ws_google, @ws_creal]
         10.times do
->>>>>>> 22a9aa1fac2cb0f7a034b4908285898905fda238
           @wss << Factory(:workstation)
         end
-=======
-        @ws_false = Factory(:workstation_false)
-        @wss = [@ws, @ws_google, @ws_creal, @ws_false]
->>>>>>> tmp
+
         get :index
       end
       
@@ -92,8 +79,8 @@ describe WorkstationsController do
       it "should find the right workstation" do assigns(:workstation.should) == @ws end
       
       it "should include the workstation's data" do
-        response.should have_selector("p", :content => "IP: #{@ws.ip_address}")
-        response.should have_selector("p", :content => "mac: #{@ws.mac_address}")
+        response.should have_selector("li", :content => "IP: #{@ws.ip_address}")
+        response.should have_selector("li", :content => "mac: #{@ws.mac_address}")
       end
     end
     
