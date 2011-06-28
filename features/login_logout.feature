@@ -2,6 +2,13 @@ Feature: Login and logout
   In order to access to website
   As an registered user
   I want log in and log out successfully
+
+
+  Background:
+    Given exists users:
+      | username | password  |
+      | seeduser | porfaplis |
+      And I login as user "seeduser" with password "porfaplis"
   
   Scenario: Login
     Given I login as:
