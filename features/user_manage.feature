@@ -9,7 +9,7 @@ Feature: User manage
       | root     | porfadmin |
       | seeduser | porfaplis |
       | user2    | password2 |
-      And I login as user "root" with password "porfadmin"
+      And I login as user "user2" with password "password2"
       And I am on the home page
    
   # listar usuarios
@@ -17,10 +17,10 @@ Feature: User manage
     Given I am on the home page
     When I follow "Users"
     Then I should be on the users page
-      And I should see "Usuarios" within "h2"
-      And I should see "root" within "td"
-      And I should see "seeduser" within "td"
-      And I should see "user2" within "td"
+      And I should see the following table rows:
+        | root     |
+        | seeduser |
+        | user2    |
 
   # crear nuevo usuario
   Scenario: go to new user
