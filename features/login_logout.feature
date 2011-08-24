@@ -3,25 +3,19 @@ Feature: Login and logout
   As an registered user
   I want log in and log out successfully
 
-
   Background:
     Given exists users:
       | username | password  |
       | seeduser | porfaplis |
-      And I login as user "seeduser" with password "porfaplis"
   
   Scenario: Login
-    Given I login as:
-    | username | password  |
-    | seeduser | porfaplis |
+    Given I login as user "seeduser" with password "porfaplis"
     Then I should be on the home page
       And I should see "Signed in successfully." within "div"
       And I should see "Signed in as seeduser"
   
   Scenario: Logout
-    Given I login as:
-    | username | password  |
-    | seeduser | porfaplis |
+    Given I login as user "seeduser" with password "porfaplis"
     When I follow "Sign out"
     Then I should be on the home page
       And I should see "Signed out successfully." within "div"

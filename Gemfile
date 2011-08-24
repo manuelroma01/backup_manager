@@ -11,7 +11,7 @@ gem 'formtastic', '>=1.2.3'
 
 group :development do
   gem 'nifty-generators'
-  gem 'rspec-rails', '>= 2.5.0'
+  gem 'rspec-rails', '>= 2.6.1'
   gem 'annotate-models'
 end
 
@@ -19,7 +19,7 @@ group :test do
   gem 'mocha' # dep nifty-generators
   gem 'nifty-generators'
   gem 'webrat'
-  gem 'rspec-rails', '>= 2.5.0'
+  gem 'rspec-rails', '>= 2.6.1'
   gem 'autotest'
   gem 'autotest-rails'
   gem 'spork'

@@ -8,9 +8,11 @@ Feature: User manage
       | username | password  |
       | root     | porfadmin |
       | seeduser | porfaplis |
+      | user2    | password2 |
       And I login as user "root" with password "porfadmin"
       And I am on the home page
    
+  # listar usuarios
   Scenario: list users
     Given I am on the home page
     When I follow "Users"
@@ -18,6 +20,7 @@ Feature: User manage
       And I should see "Usuarios" within "h2"
       And I should see "root" within "td"
       And I should see "seeduser" within "td"
+      And I should see "user2" within "td"
 
   # crear nuevo usuario
   Scenario: go to new user
