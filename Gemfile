@@ -17,6 +17,7 @@ group :development do
 end
 
 group :test do
+  gem 'nokogiri', '>= 1.4.4'
   gem 'mocha' # dep nifty-generators
   gem 'nifty-generators'
   gem 'webrat'
