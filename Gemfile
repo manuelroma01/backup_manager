@@ -8,7 +8,6 @@ gem 'will_paginate', '>=3.0.pre2'
 gem 'net-ping', '>=1.5.0'
 gem 'haml', '>=3.1.1'
 gem 'formtastic', '>=1.2.3'
-gem 'nokogiri', '>= 1.4.4'
 
 group :development do
   gem 'nifty-generators'
