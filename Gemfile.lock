@@ -29,6 +29,7 @@ GEM
       activemodel (= 3.0.5)
       activesupport (= 3.0.5)
     activesupport (3.0.5)
+    annotate (2.4.0)
     annotate-models (1.0.4)
     arel (2.0.9)
     autotest (4.4.6)
@@ -162,6 +163,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  annotate
   annotate-models
   autotest
   autotest-rails
