@@ -10,7 +10,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110423232254) do
+ActiveRecord::Schema.define(:version => 20110828184351) do
+
+  create_table "equipments", :force => true do |t|
+    t.string   "tag",         :limit => 10, :null => false
+    t.string   "ip_address",  :limit => 15, :null => false
+    t.string   "mac_address", :limit => 17, :null => false
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "equipments", ["tag"], :name => "index_workstations_on_tag"
+  add_index "equipments", ["user_id"], :name => "index_workstations_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
@@ -33,17 +45,5 @@ ActiveRecord::Schema.define(:version => 20110423232254) do
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
   add_index "users", ["unlock_token"], :name => "index_users_on_unlock_token", :unique => true
-
-  create_table "workstations", :force => true do |t|
-    t.string   "tag",         :limit => 10, :null => false
-    t.string   "ip_address",  :limit => 15, :null => false
-    t.string   "mac_address", :limit => 17, :null => false
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "workstations", ["tag"], :name => "index_workstations_on_tag"
-  add_index "workstations", ["user_id"], :name => "index_workstations_on_user_id"
 
 end

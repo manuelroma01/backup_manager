@@ -10,7 +10,7 @@
   %nav#actions
     %ul
       %li= link_to "Edit", edit_user_path(@user)
-      %li= link_to "Destroy", @user, :confirm => 'Are you sure?', :method => :delete
+      %li= link_to "Destroy", @user, :method => :delete, :confirm => 'Are you sure?', :title => "Delete #{@user.username}"
       %li= link_to "Back", users_path
 .clear
 

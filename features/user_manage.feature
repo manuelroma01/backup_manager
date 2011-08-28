@@ -62,5 +62,14 @@ Feature: User manage
       And I press "Aceptar"
     Then I should be on the "cucumber user" show user page
       And I should see "Usuario: cucumber user" within "h2"
-      And I should see "Usuario cucumber modificado" within "div"
+      And I should see "Usuario cucumber user modificado" within "div"
+      
+  Scenario: destroy user
+    Given I am on the "seeduser" show user page
+    When I follow "Destroy"
+    Then I should be on the users page
+      And I should see "Usuario seeduser eliminado" within "div"
+      And I should not see the following table rows:
+        | seeduser |
   
+  #pendientes: evituar auto-destrucción de usuarios
