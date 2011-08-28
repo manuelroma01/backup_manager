@@ -10,8 +10,12 @@ end
 # equipment random
 Factory.define :equipment do |e|
   e.sequence(:tag) { |n| "tag#{n}" }
+  e.equipment_type 'server'
+  e.equipment_model 'notifixis'
   e.sequence(:ip_address) { |n| "#{(rand(220)+10)}.#{(rand(220)+10)}.#{(rand(220)+10)}.#{(rand(220)+10)}" }
   e.sequence(:mac_address) { |n| "#{(rand(230)+20).to_s(16)}-#{(rand(230)+20).to_s(16)}-#{(rand(230)+20).to_s(16)}-#{(rand(230)+20).to_s(16)}-#{(rand(230)+20).to_s(16)}-#{(rand(230)+20).to_s(16)}" }
+  e.location 'lapcalle'
+  e.user 'robocop'
 end
 
 # equipments

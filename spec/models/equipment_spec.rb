@@ -1,17 +1,35 @@
 require 'spec_helper'
 
+=begin
+  t.string :tag, :limit => 10, :null => false, :unique => true
+  t.string :equipment_type, :limit => 15, :null => false
+  t.string :model, :limit => 30
+  t.string :ip_address, :limit => 15, :null => false, :unique => true
+  t.string :mac_address, :limit => 17, :null => false, :unique => true
+  t.string :location, :limit => 10
+  t.string :user, :limit => 20
+=end
+
 describe Equipment do
   before(:each) do
     @ws_attr = {
       :tag => 'www.google.com',
+      :equipment_type => 'server',
+      :equipment_model => 'google web server',
       :ip_address => '209.85.146.104',
-      :mac_address => '20-cf-30-e8-4b-4c'
+      :mac_address => '20-cf-30-e8-4b-4c',
+      :location => 'Googleplex',
+      :user => 'Saint Google'
     }
     
     @ws_attr_2 = {
       :tag => 'www.creal.cat',
+      :equipment_type => 'workstation',
+      :equipment_model => 'creal web server',
       :ip_address => '193.144.6.2',
-      :mac_address => '54-87-e6-8d-52-10'
+      :mac_address => '54-87-e6-8d-52-10',
+      :location => 'CPD',
+      :user => 'Er paco'
     }
   end
   
@@ -21,8 +39,10 @@ describe Equipment do
   
   describe "validations" do
     it "should require a tag" do Equipment.new(@ws_attr.merge(:tag => "")).should_not be_valid end
+    it "should require an equipment_type" do Equipment.new(@ws_attr.merge(:equipment_type => "")).should_not be_valid end
     it "should require an ip_address" do Equipment.new(@ws_attr.merge(:ip_address => "")).should_not be_valid end
     it "should require a mac_address" do Equipment.new(@ws_attr.merge(:mac_address => "")).should_not be_valid end
+    it "should require a location" do Equipment.new(@ws_attr.merge(:location => "")).should_not be_valid end      
   end
   
   # validación formato atributos

@@ -128,8 +128,10 @@ describe EquipmentsController do
         before(:each) do
           @attr_create = {
             :tag => "createequipment",
+            :equipment_type => 'server',
             :ip_address => "172.20.32.52",
-            :mac_address => "00-11-22-33-44-55"
+            :mac_address => "00-11-22-33-44-55",
+            :location => 'office'
           }
         end
 

@@ -1,19 +1,5 @@
-# == Schema Information
-# Schema version: 20110411215645
-#
-# Table name: equipments
-#
-#  id          :integer         not null, primary key
-#  tag         :string(10)      not null
-#  ip_address  :string(15)      not null
-#  mac_accress :string(17)      not null
-#  user_id     :integer
-#  created_at  :datetime
-#  updated_at  :datetime
-#
-
 class Equipment < ActiveRecord::Base
-  attr_accessible :tag, :ip_address, :mac_address
+  attr_accessible :tag, :equipment_type, :equipment_model, :ip_address, :mac_address, :location, :user
   
   @ip_regex = /^([1-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(\.([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])){3}$/
   @mac_regex = /^([0-9a-fA-F]{2}[:-]){5}[0-9a-fA-F]{2}$/i
@@ -25,12 +11,14 @@ class Equipment < ActiveRecord::Base
   # validaciones  
   validates :tag, :presence => true,
     :uniqueness => true
+  validates :equipment_type, :presence => true
   validates :ip_address, :presence => true,
     :uniqueness => true,
     :format => { :with => @ip_regex }
   validates :mac_address, :presence => true,
     :uniqueness => true,
     :format => { :with => @mac_regex }
+  validates :location, :presence => true
     
   # funciones públicas    
   def online?
