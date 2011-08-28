@@ -3,7 +3,7 @@ BackupManager::Application.routes.draw do
 
   devise_for :users
   resources :users
-  resources :workstations
+  resources :equipments
 
   # páginas estáticas
 

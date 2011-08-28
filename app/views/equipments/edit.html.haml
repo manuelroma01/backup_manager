@@ -1,0 +1,8 @@
+- title "Editar Equipment: #{@equipment.tag}"
+
+= render 'form'
+
+%p
+  = link_to "Ver", @equipment
+  ||
+  = link_to "Cancelar", equipments_path

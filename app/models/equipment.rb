@@ -1,7 +1,7 @@
 # == Schema Information
 # Schema version: 20110411215645
 #
-# Table name: workstations
+# Table name: equipments
 #
 #  id          :integer         not null, primary key
 #  tag         :string(10)      not null
@@ -12,7 +12,7 @@
 #  updated_at  :datetime
 #
 
-class Workstation < ActiveRecord::Base
+class Equipment < ActiveRecord::Base
   attr_accessible :tag, :ip_address, :mac_address
   
   @ip_regex = /^([1-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(\.([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])){3}$/

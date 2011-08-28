@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110828184351) do
+ActiveRecord::Schema.define(:version => 20110423232254) do
 
   create_table "equipments", :force => true do |t|
     t.string   "tag",         :limit => 10, :null => false
@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(:version => 20110828184351) do
     t.datetime "updated_at"
   end
 
-  add_index "equipments", ["tag"], :name => "index_workstations_on_tag"
-  add_index "equipments", ["user_id"], :name => "index_workstations_on_user_id"
+  add_index "equipments", ["tag"], :name => "index_equipments_on_tag"
+  add_index "equipments", ["user_id"], :name => "index_equipments_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false

@@ -197,7 +197,7 @@ describe UsersController do
         end
         
         it "should redirect to the user show page" do response.should redirect_to(user_path(@user)) end
-        it "should have a flash message" do flash[:success].should =~ /actualizado/ end
+        it "should have a flash message" do flash[:success].should =~ /modificado/ end
       end
     end
 

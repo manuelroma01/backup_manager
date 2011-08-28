@@ -1,0 +1,24 @@
+- title "Equipments"
+
+.grid_24
+  %table
+    %tr
+      %th Tag
+      %th IP
+      %th mac
+      
+    - for equipment in @equipments
+      %tr
+        %td= link_to equipment.tag, equipment
+        %td= equipment.ip_address
+        %td= equipment.mac_address
+.clear
+
+.grid_12
+  %nav#paginate
+    = will_paginate
+.grid_12
+  %nav#actions
+    %ul
+      %li= link_to "New equipment", new_equipment_path
+.clear

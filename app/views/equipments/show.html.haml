@@ -1,0 +1,16 @@
+- title "Equipment: #{@equipment.tag}"
+
+.grid_24
+  %ul
+    %li= "IP: #{@equipment.ip_address}"
+    %li= "mac: #{@equipment.mac_address}"
+    %li= "Estado #{@equipment.online? ? 'ON' : 'OFF'}"
+.clear
+
+.grid_24
+  %nav#actions
+    %ul
+      %li= link_to "Edit", edit_equipment_path(@equipment)
+      %li= link_to "Destroy", @equipment, :confirm => 'De veras?', :method => :delete
+      %li= link_to "Back", equipments_path
+.clear
