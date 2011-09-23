@@ -12,8 +12,7 @@ gem 'formtastic', '>=1.2.3'
 group :development do
   gem 'nifty-generators'
   gem 'rspec-rails', '>= 2.6.1'
-  gem 'annotate'
-  gem 'annotate-models'
+  gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
 end
 
 group :test do
