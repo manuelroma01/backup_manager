@@ -19,7 +19,7 @@ describe Equipment do
       :ip_address => '209.85.146.104',
       :mac_address => '20-cf-30-e8-4b-4c',
       :location => 'Googleplex',
-      :user => 'Saint Google'
+      :equipment_user => 'Saint Google'
     }
     
     @ws_attr_2 = {
@@ -29,7 +29,7 @@ describe Equipment do
       :ip_address => '193.144.6.2',
       :mac_address => '54-87-e6-8d-52-10',
       :location => 'CPD',
-      :user => 'Er paco'
+      :equipment_user => 'Er paco'
     }
   end
   

@@ -203,19 +203,35 @@ describe UsersController do
 
     # borrar usuario
     describe "DELETE :destroy" do
-      before(:each) do
-        @user_delete = Factory.create(:user, :username => 'delete', :email => "delete@test.com")
+      # no permitir auto borrado
+      describe "failure" do
+        it "should not self-destroy" do
+          lambda do
+            delete :destroy, :id => @user
+          end.should_not change(User, :count)
+        end
+        
+        it "should render the user page" do
+          delete :destroy, :id => @user
+          response.should render_template('show')
+        end
       end
       
-      it "should destroy the user" do
-        lambda do
+      describe "success" do
+        before(:each) do
+          @user_delete = Factory.create(:user, :username => 'delete', :email => "delete@test.com")
+        end
+        
+        it "should destroy the user" do
+          lambda do
+            delete :destroy, :id => @user_delete
+          end.should change(User, :count).by(-1)
+        end
+        
+        it "should redirect to the users page" do
           delete :destroy, :id => @user_delete
-        end.should change(User, :count).by(-1)
-      end
-      
-      it "should redirect to the users page" do
-        delete :destroy, :id => @user_delete
-        response.should redirect_to(users_path)
+          response.should redirect_to(users_path)
+        end
       end
     end
       

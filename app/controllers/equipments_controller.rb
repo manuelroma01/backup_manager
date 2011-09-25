@@ -16,7 +16,8 @@ class EquipmentsController < ApplicationController
   def create
     @equipment = Equipment.new(params[:equipment])
     if @equipment.save
-      redirect_to @equipment, :notice => "Successfully created equipment."
+      flash[:success] = "Equipment #{@equipment.tag} created"
+      redirect_to @equipment
     else
       render :action => 'new'
     end
@@ -29,7 +30,7 @@ class EquipmentsController < ApplicationController
   def update
     @equipment = Equipment.find(params[:id])
     if @equipment.update_attributes(params[:equipment])
-      flash[:success] = "Equipment actualizada"
+      flash[:success] = "Equipment #{@equipment.tag} updated"
       redirect_to @equipment
     else
       @equipment.reload
@@ -40,6 +41,6 @@ class EquipmentsController < ApplicationController
   def destroy
     @equipment = Equipment.find(params[:id])
     @equipment.destroy
-    redirect_to equipments_url, :notice => "Successfully destroyed equipment."
+    redirect_to equipments_url, :notice => "Equipment #{@equipment.tag} deleted"
   end
 end

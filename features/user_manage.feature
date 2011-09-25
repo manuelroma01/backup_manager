@@ -1,4 +1,4 @@
-Feature: User manage
+Feature: User management
   In order to manage users
   As an root user
   I want correct crud operations for users
@@ -9,7 +9,7 @@ Feature: User manage
       | root     | porfadmin |
       | seeduser | porfaplis |
       | user2    | password2 |
-      And I login as user "user2" with password "password2"
+      And I login as user "root" with password "porfadmin"
       And I am on the home page
    
   # listar usuarios
@@ -63,7 +63,8 @@ Feature: User manage
     Then I should be on the "cucumber user" show user page
       And I should see "Usuario: cucumber user" within "h2"
       And I should see "Usuario cucumber user modificado" within "div"
-      
+   
+  # borrar usuario   
   Scenario: destroy user
     Given I am on the "seeduser" show user page
     When I follow "Destroy"
@@ -72,4 +73,10 @@ Feature: User manage
       And I should not see the following table rows:
         | seeduser |
   
-  #pendientes: evituar auto-destrucción de usuarios
+  #evituar auto-destrucción de usuarios
+  Scenario: avoid self-destroy
+    Given I am on the "root" show user page
+    When I follow "Destroy"
+    Then I should be on the "root" show user page
+      And I should see "El usuario no puede auto-destruirse" within "div"
+

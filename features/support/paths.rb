@@ -21,6 +21,12 @@ module NavigationHelpers
     when /the "(.*)" edit user page/
       edit_user_path(User.find_by_username("#{$1}"))
 
+    #equipment
+    when /the "(.*)" show equipment page/
+      equipment_path(Equipment.find_by_tag("#{$1}"))
+    when /the "(.*)" edit equipment page/
+      edit_equipment_path(Equipment.find_by_tag("#{$1}"))
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
