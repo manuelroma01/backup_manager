@@ -2,8 +2,12 @@
 
 .grid_24
   %ul
+    %li= "Type: #{@equipment.equipment_type}"
+    %li= "Model: #{@equipment.equipment_model}"
     %li= "IP: #{@equipment.ip_address}"
     %li= "mac: #{@equipment.mac_address}"
+    %li= "Location #{@equipment.location}"
+    %li= "User #{@equipment.equipment_user}"
     %li= "Estado #{@equipment.online? ? 'ON' : 'OFF'}"
 .clear
 

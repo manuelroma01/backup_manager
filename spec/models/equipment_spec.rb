@@ -1,15 +1,5 @@
 require 'spec_helper'
 
-=begin
-  t.string :tag, :limit => 10, :null => false, :unique => true
-  t.string :equipment_type, :limit => 15, :null => false
-  t.string :model, :limit => 30
-  t.string :ip_address, :limit => 15, :null => false, :unique => true
-  t.string :mac_address, :limit => 17, :null => false, :unique => true
-  t.string :location, :limit => 10
-  t.string :user, :limit => 20
-=end
-
 describe Equipment do
   before(:each) do
     @ws_attr = {
