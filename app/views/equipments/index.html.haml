@@ -4,22 +4,14 @@
   %table
     %tr
       %th Tag
-      %th Type
-      %th Model
       %th IP
       %th mac
-      %th Location
-      %th User
       
     - for equipment in @equipments
       %tr
         %td= link_to equipment.tag, equipment
-        %td= equipment.equipment_type
-        %td= equipment.equipment_model
         %td= equipment.ip_address
         %td= equipment.mac_address
-        %td= equipment.location
-        %td= equipment.equipment_user
 .clear
 
 .grid_12

@@ -91,7 +91,7 @@ describe EquipmentsController do
       end
       
       it "should be successful" do response.should be_success end
-      it "should have the right title" do response.should have_selector("title", :content => "New equipment") end
+      it "should have the right title" do response.should have_selector("title", :content => "Nuevo equipo") end
     end
     
         # crear usuario
@@ -114,7 +114,7 @@ describe EquipmentsController do
         
         it "should have the right title" do
           post :create, :equipment => @attr_create
-          response.should have_selector("title", :content => "New equipment")
+          response.should have_selector("title", :content => "Nuevo equipo")
         end
         
         it "should render the 'new' page" do
@@ -156,7 +156,7 @@ describe EquipmentsController do
       
       it "should be successful" do response.should be_success end
       it "should have the right title" do
-        response.should have_selector("title", :content => "Edit equipment: #{@ws.tag}")
+        response.should have_selector("title", :content => "Editar Equipment: #{@ws.tag}")
       end
     end
     
@@ -176,7 +176,7 @@ describe EquipmentsController do
         
         it "should render the 'edit' page" do response.should render_template('edit') end
         it "should have the right title" do
-          response.should have_selector("title", :content => "Edit equipment: #{@ws.tag}")
+          response.should have_selector("title", :content => "Editar Equipment: #{@ws.tag}")
         end
       end
       
@@ -199,7 +199,7 @@ describe EquipmentsController do
         end
         
         it "should redirect to the equipment show page" do response.should redirect_to(equipment_path(@ws)) end
-        it "should have a flash message" do flash[:success].should =~ /updated/ end
+        it "should have a flash message" do flash[:success].should =~ /actualizada/ end
       end
     end
 

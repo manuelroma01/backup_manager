@@ -10,8 +10,6 @@ puts 'Usuario admin'
 puts '--------------------------------------'
 user = User.create!(
   :username => 'root',
-  :name => '',
-  :surnames => '',
   :email => 'admin@test.com',
   :password => 'porfadmin',
   :password_confirmation => 'porfadmin'
@@ -22,8 +20,6 @@ puts 'Usuarios seed'
 puts '--------------------------------------'
 user = User.create!(
   :username => 'seeduser',
-  :name => 'Perich',
-  :surnames => 'Van Der Palots',
   :email => 'seeduser@test.com',
   :password => 'porfaplis',
   :password_confirmation => 'porfaplis'

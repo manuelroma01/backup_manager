@@ -1,13 +1,9 @@
 = semantic_form_for(@equipment) do |f|
   = f.inputs :title => 'Equipment data' do
     = f.input :tag
-    = f.input :equipment_type
-    = f.input :equipment_model
     = f.input :ip_address
     = f.input :mac_address
-    = f.input :location
-    = f.input :equipment_user
     
   = f.buttons do
-    = f.commit_button :label => 'OK'
+    = f.commit_button :label => 'Aceptar'
 
