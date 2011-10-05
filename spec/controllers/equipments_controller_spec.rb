@@ -213,13 +213,13 @@ describe EquipmentsController do
         )
       end
       
-      it "should destroy the user" do
+      it "should destroy the equipment" do
         lambda do
           delete :destroy, :id => @ws_delete
         end.should change(Equipment, :count).by(-1)
       end
       
-      it "should redirect to the users page" do
+      it "should redirect to the equipments page" do
         delete :destroy, :id => @ws_delete
         response.should redirect_to(equipments_path)
       end
