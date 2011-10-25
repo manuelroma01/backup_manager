@@ -99,6 +99,7 @@ describe UsersController do
           @attr_create = {
             :username => "",
             :email => "",
+            :role => Factory.create(:roleuser),
             :password => "",
             :password_confirmation => ""
           }
@@ -127,9 +128,11 @@ describe UsersController do
           @attr_create = {
             :username => "createuser",
             :email => "create@test.com",
+            :role => Factory.create(:roleuser),
             :password => "porfaplis",
             :password_confirmation => "porfaplis"
           }
+          puts "user_"
         end
 
         it "should create a user" do

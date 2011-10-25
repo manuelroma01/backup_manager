@@ -4,6 +4,8 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :username, :limit => 15
       t.string :name, :limit => 30
       t.string :surnames, :limit => 50
+      t.string :email, :limit => 15
+      t.integer :role_id  # fk
       
       t.database_authenticatable :null => false
       t.recoverable

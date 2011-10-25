@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110423224955) do
+ActiveRecord::Schema.define(:version => 20111025122044) do
 
   create_table "equipments", :force => true do |t|
     t.string   "tag",             :limit => 10, :null => false
@@ -27,11 +27,18 @@ ActiveRecord::Schema.define(:version => 20110423224955) do
   add_index "equipments", ["equipment_user"], :name => "index_equipments_on_equipment_user"
   add_index "equipments", ["tag"], :name => "index_equipments_on_tag"
 
+  create_table "roles", :force => true do |t|
+    t.string   "name",       :limit => 15, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", :force => true do |t|
     t.string   "username",               :limit => 15
     t.string   "name",                   :limit => 30
     t.string   "surnames",               :limit => 50
     t.string   "email",                                 :default => "", :null => false
+    t.integer  "role_id"
     t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"

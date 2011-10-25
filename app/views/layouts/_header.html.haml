@@ -5,10 +5,13 @@
   
   .grid_18
     %nav#main
-      %ul
-        %li= link_to "Home", root_path
-        %li= link_to "Equipments", equipments_path
-        %li= link_to "Users", users_path
+      - if user_signed_in?
+        %ul
+          %li= link_to "Home", root_path
+          - if can? :manage, :equipments
+            %li= link_to "Equipments", equipments_path
+          - if can? :manage, :users
+            %li= link_to "Users", users_path
 
   .grid_6
     %nav#sign

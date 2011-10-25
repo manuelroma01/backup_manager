@@ -1,4 +1,10 @@
 # Given -----------------------------------
+Given /^exists roles:$/ do |table|
+  table.hashes.each do |hash|
+    @role = Factory(:role, hash)
+  end
+end
+
 Given /^exists users:$/ do |table|
   table.hashes.each do |hash|
     @user = Factory(:user, hash)

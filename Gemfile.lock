@@ -168,7 +168,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  annotate!
+  annotate (~> 2.4.1.beta1)!
   autotest
   autotest-rails
   cancan (>= 1.6.7)

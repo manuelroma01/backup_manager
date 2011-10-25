@@ -1,14 +1,18 @@
 Feature: User management
   In order to manage users
-  As an root user
+  As an admin user
   I want correct crud operations for users
   
   Background:
-    Given exists users:
-      | username | password  |
-      | root     | porfadmin |
-      | seeduser | porfaplis |
-      | user2    | password2 |
+    Given exists roles:
+      | name |
+      | root |
+      | user |
+      And exists users:
+      | username | name | surnames | password  | role_id |
+      | root     | root |          | porfadmin | 1       |
+      | seeduser | seed | user     | porfaplis | 2       |
+      | user2    | user | two      | password2 | 2       |
       And I login as user "root" with password "porfadmin"
       And I am on the home page
    
@@ -18,9 +22,9 @@ Feature: User management
     When I follow "Users"
     Then I should be on the users page
       And I should see the following table rows:
-        | root     |
-        | seeduser |
-        | user2    |
+      | root     | root      | root |
+      | seeduser | seed user | user |
+      | user2    | user two  | user |
 
   # crear nuevo usuario
   Scenario: go to new user
@@ -34,6 +38,7 @@ Feature: User management
     When I fill in "user_username" with "cucumber user"
       And I fill in "user_email" with "cucumber@user.com"
       And I fill in "user_password" with "porfaplis"
+      And I choose "user_role_id_2"
       And I fill in "user_password_confirmation" with "porfaplis"
       And I press "Aceptar"
     Then I should be on the "cucumber user" show user page

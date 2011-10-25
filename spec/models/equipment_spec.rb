@@ -6,7 +6,7 @@ describe Equipment do
       :tag => 'www.google.com',
       :equipment_type => 'server',
       :equipment_model => 'google web server',
-      :ip_address => '209.85.146.104',
+      :ip_address => '209.85.227.147',
       :mac_address => '20-cf-30-e8-4b-4c',
       :location => 'Googleplex',
       :equipment_user => 'Saint Google'
@@ -84,3 +84,19 @@ describe Equipment do
     end
   end
 end
+# == Schema Information
+#
+# Table name: equipments
+#
+#  id              :integer         not null, primary key
+#  tag             :string(10)      not null
+#  equipment_type  :string(15)      not null
+#  equipment_model :string(30)
+#  ip_address      :string(15)      not null
+#  mac_address     :string(17)      not null
+#  location        :string(10)
+#  equipment_user  :string(15)
+#  created_at      :datetime
+#  updated_at      :datetime
+#
+
