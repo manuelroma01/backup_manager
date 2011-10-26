@@ -1,11 +1,11 @@
 require 'factory_girl'
 
 # roles
-Factory.define :roleuser, :class => :role do |r|
+Factory.define :role do |r|
   r.name 'user'
 end
 
-Factory.define :roleroot, :class => :role do |r|
+Factory.define :roleroot, :parent => :role do |r|
   r.name 'root'
 end
 
@@ -13,7 +13,7 @@ end
 Factory.define :user do |u|
   u.sequence(:username) { |n| "testuser#{n}" }
   u.sequence(:email) { |n| "user#{n}@test.com" }
-  u.association :role, :factory => :roleuser
+  u.association :role
   u.password 'porfaplis'
 end
 

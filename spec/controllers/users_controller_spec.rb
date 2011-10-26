@@ -4,7 +4,10 @@ describe UsersController do
   render_views
 
   before(:each) do
-    @user = Factory.create(:user, :username => 'testuser', :email => "test@user.com")
+    @roleuser = Factory.create(:role)
+    @roleroot = Factory.create(:role, :name => 'user')
+  
+    @user = Factory.create(:user, :username => 'testuser', :role => @roleuser, :email => "test@user.com")
   end
 
   # ninguna operación permitida para usuarios no autenticados
@@ -99,7 +102,7 @@ describe UsersController do
           @attr_create = {
             :username => "",
             :email => "",
-            :role => Factory.create(:roleuser),
+            :role_id => 0,
             :password => "",
             :password_confirmation => ""
           }
@@ -128,11 +131,10 @@ describe UsersController do
           @attr_create = {
             :username => "createuser",
             :email => "create@test.com",
-            :role => Factory.create(:roleuser),
+            :role_id => @roleuser.id,
             :password => "porfaplis",
             :password_confirmation => "porfaplis"
           }
-          puts "user_"
         end
 
         it "should create a user" do
@@ -168,6 +170,7 @@ describe UsersController do
           @attr_mod = {
             :username => "",
             :email => "",
+            :role_id => 0,
             :password => "",
             :password_confirmation => ""
           }
@@ -187,6 +190,7 @@ describe UsersController do
           @attr_mod = {
             :username => "newuser",
             :email => "new@test.com",
+            :role_id => @roleroot.id,
             :password => "barbaz",
             :password_confirmation => "barbaz"
           }
@@ -196,6 +200,7 @@ describe UsersController do
         it "should change the user's attributes" do
           @user.reload
           @user.username.should == @attr_mod[:username]
+          @user.role.should == @roleroot
           @user.email.should == @attr_mod[:email]
         end
         
@@ -222,7 +227,7 @@ describe UsersController do
       
       describe "success" do
         before(:each) do
-          @user_delete = Factory.create(:user, :username => 'delete', :email => "delete@test.com")
+          @user_delete = Factory.create(:user, :username => 'delete', :role => @roleuser, :email => "delete@test.com")
         end
         
         it "should destroy the user" do

@@ -26,7 +26,7 @@ user = User.create!(
   :name => '',
   :surnames => '',
   :email => 'admin@test.com',
-  :role => roleroot,
+  :role_id => roleroot.id,
   :password => 'porfadmin',
   :password_confirmation => 'porfadmin'
 )
@@ -37,7 +37,7 @@ user = User.create!(
   :name => 'Perich',
   :surnames => 'Van Der Palots',
   :email => 'seeduser@test.com',
-  :role => roleuser,
+  :role_id => roleuser.id,
   :password => 'porfaplis',
   :password_confirmation => 'porfaplis'
 )

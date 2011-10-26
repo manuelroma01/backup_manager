@@ -38,5 +38,5 @@ class User < ActiveRecord::Base
   # ver ~/config/initializers/devise.rb
   validates :username, :presence => true, :uniqueness => true,
     :length => { :maximum => 30 }
-  validates :role, :presence => true
+  validates :role_id, :presence => true
 end
