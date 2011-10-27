@@ -9,6 +9,7 @@ gem 'will_paginate', '>=3.0.pre2' # paginacion
 gem 'net-ping', '>=1.5.0'
 gem 'haml', '>=3.1.1' 
 gem 'formtastic', '>=1.2.3'
+gem 'capistrano', '>=2.5.19'
 
 
 group :development do
