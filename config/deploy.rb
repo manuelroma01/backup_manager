@@ -1,15 +1,15 @@
 require 'bundler/capistrano'
 
 # datos servidor produccion
-ser :user, 'root'
+set :user, 'manel'
 set :domain, 'r3test.creal.cat'
-set :applicationdir '/home/backup_manager'
+set :applicationdir, '/home/backup_manager'
 set :application, "backup_manager"
 
 # control de versiones con git
 set :scm, :git
 set :repository,  "manel@crealfs02.creal.cat:/var/git/backup_manager.git"
-set :branch, 'master'
+set :branch, 'autorizacion'
 set :git_shallow_clone, 1
 set :scm_verbose, true
 
