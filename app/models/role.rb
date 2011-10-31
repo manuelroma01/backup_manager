@@ -1,4 +1,13 @@
 class Role < ActiveRecord::Base
+  # acceso
+  attr_accessible :name
+
+  # validaciones
+  validates :name,
+    :presence => true,
+    :unique => true
+  
+  # relaciones
   has_many :users
 end
 # == Schema Information

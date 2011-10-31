@@ -18,7 +18,9 @@ roleuser = Role.create!(
 )
 puts '+ ' << roleuser.name
 puts '-------------------------------------'
+
 puts ''
+
 puts '-------------------------------------'
 puts 'Usuarios'
 user = User.create!(
