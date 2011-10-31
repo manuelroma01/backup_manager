@@ -5,7 +5,7 @@ class Role < ActiveRecord::Base
   # validaciones
   validates :name,
     :presence => true,
-    :unique => true
+    :uniqueness => true
   
   # relaciones
   has_many :users

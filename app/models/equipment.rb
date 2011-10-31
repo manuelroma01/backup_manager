@@ -27,6 +27,7 @@ class Equipment < ActiveRecord::Base
     return find_ws.ping?
   end
 end
+
 # == Schema Information
 #
 # Table name: equipments

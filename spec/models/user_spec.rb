@@ -2,8 +2,10 @@ require 'spec_helper'
 
 describe User do
   before(:each) do
-    roleroot = Role.create!(:name => 'root')
-    roleuser = Role.create!(:name => 'user')
+    roleroot = Role.find_by_name('root')
+    roleroot ||= Role.create!(:name => 'root')
+    roleuser = Role.find_by_name('user')
+    roleuser ||= Role.create!(:name => 'user')
     
     @user_attr = {
       :username => 'testuser',

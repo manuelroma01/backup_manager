@@ -4,8 +4,10 @@ describe UsersController do
   render_views
 
   before(:each) do
-    @roleuser = Factory.create(:role)
-    @roleroot = Factory.create(:role, :name => 'user')
+    @roleroot = Role.find_by_name('root')
+    @roleroot ||= Role.create!(:name => 'root')
+    @roleuser = Role.find_by_name('user')
+    @roleuser ||= Role.create!(:name => 'user')
   
     @user = Factory.create(:user, :username => 'testuser', :role => @roleuser, :email => "test@user.com")
   end
@@ -39,8 +41,8 @@ describe UsersController do
     # listar usuarios    
     describe "GET 'index'" do
       before(:each) do
-        second = Factory(:user, :username => 'second', :email => "secont@test.cat")
-        third = Factory(:user, :username => 'third', :email => "third@test.net")
+        second = Factory(:user, :username => 'second', :role => @roleuser, :email => "secont@test.cat")
+        third = Factory(:user, :username => 'third', :role => @roleuser, :email => "third@test.net")
  
         @users = [@user, second, third]       
         30.times do
