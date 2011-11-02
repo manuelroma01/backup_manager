@@ -3,9 +3,7 @@ require 'spec_helper'
 describe User do
   before(:each) do
     roleroot = Role.find_by_name('root')
-    roleroot ||= Role.create!(:name => 'root')
     roleuser = Role.find_by_name('user')
-    roleuser ||= Role.create!(:name => 'user')
     
     @user_attr = {
       :username => 'testuser',
@@ -18,8 +16,8 @@ describe User do
     @user_attr_2 = {
       :username => 'testuser_2',
       :email => 'user_2@test.com',
-      :password => 'porfaplis',
       :role_id => roleuser.id,
+      :password => 'porfaplis',
       :password_confirmation => 'porfaplis'
     }
   end
@@ -81,6 +79,12 @@ describe User do
     it "should require a matching password confirmation" do
       User.new(@user_attr.merge(:password_confirmation => "invalid")).should_not be_valid
     end
+  end
+  
+  # metodos 
+  it "should return user role" do
+    user = User.create!(@user_attr)
+    user.get_role.should == 'user'
   end
 end
 # == Schema Information

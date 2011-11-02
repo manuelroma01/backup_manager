@@ -4,15 +4,13 @@ Feature: User management
   I want correct crud operations for users
   
   Background:
-    Given exists roles:
-      | name |
-      | root |
-      | user |
+    Given exists root:
+      | username | password  |
+      | root     | porfadmin |
       And exists users:
-      | username | password  | role_id |
-      | root     | porfadmin | 1       |
-      | seeduser | porfaplis | 2       |
-      And I login as user "seeduser" with password "porfaplis"
+      | username | password  |
+      | testuser | porfaplis |
+      And I login as user "testuser" with password "porfaplis"
       And I am on the home page
       
   Scenario: Equipments - Grant

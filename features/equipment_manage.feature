@@ -3,12 +3,9 @@ Feature: Equipment management
   As an authorized user
   I want correct crud operations for equipments
   Background:
-    Given exists roles:
-      | name |
-      | root |
-      And exists users:
-      | username | password  | role_id |
-      | root     | porfadmin | 1       |
+    Given exists root:
+      | username | password  |
+      | root     | porfadmin |
       And exists equipments:
       | tag      | equipment_type | equipment_model   | ip_address    | mac_address       | location   | equipment_user |
       | IMW00548 | Desktop PC     | Dell Optiplex 960 | 172.20.32.125 | 01-46-4B-16-54-A5 | 180        | mrodriguez     |

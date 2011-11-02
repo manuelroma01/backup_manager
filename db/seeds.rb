@@ -6,7 +6,7 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
-# Vaciar seed data
+# Vaciar datos actuales
 Role.delete_all
 User.delete_all
 
@@ -31,23 +31,12 @@ puts '-------------------------------------'
 puts 'Usuarios'
 user = User.create!(
   :username => 'root',
-  :name => '',
+  :name => 'root',
   :surnames => '',
   :email => 'admin@test.com',
   :role_id => roleroot.id,
   :password => 'porfadmin',
   :password_confirmation => 'porfadmin'
-)
-puts "+ #{user.username} - #{user.role.name}"
-
-user = User.create!(
-  :username => 'seeduser',
-  :name => 'Perich',
-  :surnames => 'Van Der Palots',
-  :email => 'seeduser@test.com',
-  :role_id => roleuser.id,
-  :password => 'porfaplis',
-  :password_confirmation => 'porfaplis'
 )
 puts "+ #{user.username} - #{user.role.name}"
 puts '-------------------------------------'

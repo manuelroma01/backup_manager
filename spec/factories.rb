@@ -8,8 +8,13 @@ load(Rails.root.join("db", "seeds.rb"))
 Factory.define :user do |u|
   u.sequence(:username) { |n| "testuser#{n}" }
   u.sequence(:email) { |n| "user#{n}@test.com" }
-  u.role @roleroot
+  u.role @roleuser
   u.password 'porfaplis'
+end
+
+# user root
+Factory.define :user_root, :parent => :user do |u|
+  u.role @roleroot
 end
 
 # equipment random
