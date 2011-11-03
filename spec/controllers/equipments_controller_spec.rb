@@ -5,23 +5,28 @@ describe EquipmentsController do
 
   # ninguna operación permitida para usuarios no autenticados
   describe "for non-signed-in users" do
+    before :each do
+      @user = Factory(:user)
+      @ws = Factory(:equipment_local)    
+    end
+  
     it "should deny access to :index" do get :index end
-    it "should deny access to :show" do get :show, :id => 1 end
+    it "should deny access to :show" do get :show, :id => @ws.id end
     it "should deny access to :new" do get :new end
-    it "should deny access to :edit" do get :edit, :id => 1 end
+    it "should deny access to :edit" do get :edit, :id => @ws.id end
     it "should deny access to :update" do 
       ws = Factory(:equipment)
-      put :update, :id => 1, :equipment => ws
+      put :update, :id => @ws.id, :equipment => ws
     end
-    it "should deny acces to :delete" do delete :destroy, :id => 1 end
+    it "should deny acces to :delete" do delete :destroy, :id => @ws.id end
     it "should deny access to :create" do
       ws = Factory(:equipment)
       post :create, :equipment => ws
     end
       
     after(:each) do
-      response.should redirect_to(new_user_session_path)
-      flash[:alert].should =~ /sign in/i
+      response.should redirect_to(root_path)
+      flash[:alert].should =~ /not authorized/i
     end
   end
   

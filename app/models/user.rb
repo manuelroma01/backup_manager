@@ -17,7 +17,15 @@ class User < ActiveRecord::Base
   
   # metodos publicos
   def get_role
-    self.role.name
+    if self.role
+      return self.role.name
+    else
+      return nil
+    end
+  end
+  
+  def role?(role)
+    return !!self.role.name == role
   end
   
   def find_by_role(role_name)
