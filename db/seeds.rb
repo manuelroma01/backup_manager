@@ -9,6 +9,12 @@
 # Vaciar datos actuales
 Role.delete_all
 User.delete_all
+Room.delete_all
+puts '-------------------------------------'
+puts 'Seeds reseteados'
+puts '-------------------------------------'
+
+puts ''
 
 # Roles
 puts '-------------------------------------'
@@ -40,4 +46,40 @@ user = User.create!(
 )
 puts "+ #{user.username} - #{user.role.name}"
 puts '-------------------------------------'
+
+puts ''
+
+# Rooms
+puts '-------------------------------------'
+puts 'Rooms'
+room_johnsnow = Room.create!(
+  :name => 'John Snow',
+  :location => 'Ground floor',
+  :comment => 'Sala John Snow'
+)
+puts "+ #{room_johnsnow.name}"
+
+room_other_1 = Room.create!(
+  :name => 'Other room place 1',
+  :location => 'Ground floor',
+  :comment => 'Sala X puesto 1'
+)
+puts "+ #{room_other_1.name}"
+
+room_other_2 = Room.create!(
+  :name => 'Other room place 2',
+  :location => 'Ground floor',
+  :comment => 'Sala X puesto 2'
+)
+puts "+ #{room_other_2.name}"
+
+room_other_3 = Room.create!(
+  :name => 'Other room place 3',
+  :location => 'Ground floor',
+  :comment => 'Sala X puesto 3'
+)
+puts "+ #{room_other_3.name}"
+
+puts '-------------------------------------'
+
 

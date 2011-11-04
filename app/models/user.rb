@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 
   # relaciones
   belongs_to :role
+  has_many :reserves
 
   # accesible
   attr_accessible :username, :name, :surnames, :email, :password, :password_confirmation, :role_id

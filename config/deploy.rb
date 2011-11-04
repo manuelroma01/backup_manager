@@ -21,7 +21,7 @@ default_run_options[:pty] = true
 ## git
 set :scm, :git
 set :repository, "manel@crealfs02.creal.cat:/var/git/backup_manager.git"
-set :branch, 'autorizacion'
+set :branch, 'master'
 
 # passenger
 namespace :deploy do

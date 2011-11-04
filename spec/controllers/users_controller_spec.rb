@@ -265,8 +265,10 @@ describe UsersController do
         end
         
         it "should redirect to the users page" do
-          delete :destroy, :id => @user_delete
-        end.should change(User, :count).by(-1)
+          lambda do
+            delete :destroy, :id => @user_delete
+          end.should change(User, :count).by(-1)
+        end
       end
       
       it "should redirect to the users page" do
