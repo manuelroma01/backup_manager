@@ -4,40 +4,71 @@ describe UsersController do
   render_views
 
   before(:each) do
-    @user = Factory.create(:user, :username => 'testuser', :email => "test@user.com")
+    @roleroot = Role.find_by_name('root')
+    @roleroot ||= Role.create!(:name => 'root')
+    @roleuser = Role.find_by_name('user')
+    @roleuser ||= Role.create!(:name => 'user')
+  
+    @user = Factory.create(:user, :username => 'testuser', :role => @roleuser, :email => "test@user.com")
+    @root = User.find_by_name('root')
   end
 
   # ninguna operación permitida para usuarios no autenticados
   describe "for non-signed-in users" do
     it "should deny access to :index" do get :index end
-    it "should deny access to :show" do get :show, :id => 1 end
+    it "should deny access to :show" do get :show, :id => User.find(:first).id end
     it "should deny access to :new" do get :new end
-    it "should deny access to :edit" do get :edit, :id => 1 end
+    it "should deny access to :edit" do get :edit, :id => User.find(:first).id end
     it "should deny access to :update" do 
-      put :update, :id => 1, :user => @user
+      put :update, :id => User.find(:first).id, :user => @user
     end
-    it "should deny acces to :delete" do delete :destroy, :id => 1 end
+    it "should deny acces to :delete" do delete :destroy, :id => User.find(:first).id end
     it "should deny access to :create" do
       post :create, :user => @user
     end
       
     after(:each) do
-      response.should redirect_to(new_user_session_path)
-      flash[:alert].should =~ /sign in/i
+      response.should redirect_to(root_path)
+      flash[:alert].should =~ /not authorized/i
     end
   end      
 
-  # operaciones para usuarios autenticados
-  describe "for signed-in users" do
+  # ninguna operación permitida para usuarios normales
+  describe "for signed-in users (non-root)" do
     before(:each) do
       sign_in @user
+    end
+  
+    it "should deny access to :index" do get :index end
+    it "should deny access to :show" do get :show, :id => User.find(:first).id end
+    it "should deny access to :new" do get :new end
+    it "should deny access to :edit" do get :edit, :id => User.find(:first).id end
+    it "should deny access to :update" do 
+      put :update, :id => User.find(:first).id, :user => @user
+    end
+    it "should deny acces to :delete" do delete :destroy, :id => User.find(:first).id end
+    it "should deny access to :create" do
+      post :create, :user => @user
+    end
+      
+    after(:each) do
+      response.should redirect_to(root_path)
+      flash[:alert].should =~ /not authorized/i
+    end
+  end      
+
+
+  # operaciones para root
+  describe "for signed-in users" do
+    before(:each) do
+      sign_in @root
     end
 
     # listar usuarios    
     describe "GET 'index'" do
       before(:each) do
-        second = Factory(:user, :username => 'second', :email => "secont@test.cat")
-        third = Factory(:user, :username => 'third', :email => "third@test.net")
+        second = Factory(:user, :username => 'second', :role => @roleuser, :email => "secont@test.cat")
+        third = Factory(:user, :username => 'third', :role => @roleuser, :email => "third@test.net")
  
         @users = [@user, second, third]       
         30.times do
@@ -99,6 +130,7 @@ describe UsersController do
           @attr_create = {
             :username => "",
             :email => "",
+            :role_id => 0,
             :password => "",
             :password_confirmation => ""
           }
@@ -127,6 +159,7 @@ describe UsersController do
           @attr_create = {
             :username => "createuser",
             :email => "create@test.com",
+            :role_id => @roleuser.id,
             :password => "porfaplis",
             :password_confirmation => "porfaplis"
           }
@@ -165,6 +198,7 @@ describe UsersController do
           @attr_mod = {
             :username => "",
             :email => "",
+            :role_id => 0,
             :password => "",
             :password_confirmation => ""
           }
@@ -184,6 +218,7 @@ describe UsersController do
           @attr_mod = {
             :username => "newuser",
             :email => "new@test.com",
+            :role_id => @roleroot.id,
             :password => "barbaz",
             :password_confirmation => "barbaz"
           }
@@ -193,6 +228,7 @@ describe UsersController do
         it "should change the user's attributes" do
           @user.reload
           @user.username.should == @attr_mod[:username]
+          @user.role.should == @roleroot
           @user.email.should == @attr_mod[:email]
         end
         
@@ -203,12 +239,32 @@ describe UsersController do
 
     # borrar usuario
     describe "DELETE :destroy" do
-      before(:each) do
-        @user_delete = Factory.create(:user, :username => 'delete', :email => "delete@test.com")
+      # no permitir auto borrado
+      describe "failure" do
+        it "should not self-destroy" do
+          lambda do
+            delete :destroy, :id => @root
+          end.should_not change(User, :count)
+        end
+        
+        it "should render the user page" do
+          delete :destroy, :id => @root
+          response.should render_template('show')
+        end
       end
       
-      it "should destroy the user" do
-        lambda do
+      describe "success" do
+        before(:each) do
+          @user_delete = Factory.create(:user, :username => 'delete', :role => @roleuser, :email => "delete@test.com")
+        end
+        
+        it "should destroy the user" do
+          lambda do
+            delete :destroy, :id => @user_delete
+          end.should change(User, :count).by(-1)
+        end
+        
+        it "should redirect to the users page" do
           delete :destroy, :id => @user_delete
         end.should change(User, :count).by(-1)
       end

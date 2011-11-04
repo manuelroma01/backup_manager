@@ -4,10 +4,14 @@
   %table
     %tr
       %th Username
+      %th Name
+      %th Authorization
       
     - for user in @users
       %tr
         %td= link_to user.username, user
+        %td= "#{user.name} #{user.surnames}" 
+        %td= user.get_role
 
 .clear
 

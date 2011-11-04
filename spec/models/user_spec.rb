@@ -2,9 +2,13 @@ require 'spec_helper'
 
 describe User do
   before(:each) do
+    roleroot = Role.find_by_name('root')
+    roleuser = Role.find_by_name('user')
+    
     @user_attr = {
       :username => 'testuser',
       :email => 'user@test.com',
+      :role_id => roleuser.id,
       :password => 'porfaplis',
       :password_confirmation => 'porfaplis'
     }
@@ -12,6 +16,7 @@ describe User do
     @user_attr_2 = {
       :username => 'testuser_2',
       :email => 'user_2@test.com',
+      :role_id => roleuser.id,
       :password => 'porfaplis',
       :password_confirmation => 'porfaplis'
     }
@@ -75,4 +80,35 @@ describe User do
       User.new(@user_attr.merge(:password_confirmation => "invalid")).should_not be_valid
     end
   end
+  
+  # metodos 
+  it "should return user role" do
+    user = User.create!(@user_attr)
+    user.get_role.should == 'user'
+  end
 end
+# == Schema Information
+#
+# Table name: users
+#
+#  id                     :integer         not null, primary key
+#  username               :string(15)
+#  name                   :string(30)
+#  surnames               :string(50)
+#  email                  :string(255)     default(""), not null
+#  role_id                :integer
+#  encrypted_password     :string(128)     default(""), not null
+#  reset_password_token   :string(255)
+#  reset_password_sent_at :datetime
+#  sign_in_count          :integer         default(0)
+#  current_sign_in_at     :datetime
+#  last_sign_in_at        :datetime
+#  current_sign_in_ip     :string(255)
+#  last_sign_in_ip        :string(255)
+#  failed_attempts        :integer         default(0)
+#  unlock_token           :string(255)
+#  locked_at              :datetime
+#  created_at             :datetime
+#  updated_at             :datetime
+#
+

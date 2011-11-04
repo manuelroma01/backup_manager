@@ -10,10 +10,10 @@ BackupManager::Application.configure do
   config.action_controller.perform_caching = true
 
   # Action mailer config - para devise
-  config.action_mailer.default_url_options = { :host => 'backup_manager.creal.cat' }
+  config.action_mailer.default_url_options = { :host => 'r3test.creal.cat' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.raise_delivery_error = false
+  #config.action_mailer.raise_delivery_error = false
   config.action_mailer.default :charset => 'utf-8'
 
   # Specifies the header that your server uses for sending files

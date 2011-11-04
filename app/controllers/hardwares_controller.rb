@@ -1,4 +1,5 @@
 class EquipmentsController < ApplicationController
+  load_and_authorize_resource # permisos cancan
   before_filter :authenticate_user!   # acceso a usuarios logeados
   
   def index

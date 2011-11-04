@@ -43,6 +43,12 @@ GEM
     bcrypt-ruby (2.1.4)
     builder (2.1.2)
     cancan (1.6.7)
+    capistrano (2.9.0)
+      highline
+      net-scp (>= 1.0.0)
+      net-sftp (>= 2.0.0)
+      net-ssh (>= 2.0.14)
+      net-ssh-gateway (>= 1.1.0)
     capybara (0.4.1.2)
       celerity (>= 0.7.9)
       culerity (>= 0.2.4)
@@ -87,6 +93,7 @@ GEM
     gherkin (2.3.6)
       json (>= 1.4.6)
     haml (3.1.1)
+    highline (1.6.2)
     i18n (0.5.0)
     jquery-rails (0.2.7)
       rails (~> 3.0)
@@ -103,6 +110,13 @@ GEM
     net-ldap (0.2.2)
     net-ping (1.5.0)
       net-ldap (~> 0.2.2)
+    net-scp (1.0.4)
+      net-ssh (>= 1.99.1)
+    net-sftp (2.0.5)
+      net-ssh (>= 2.0.9)
+    net-ssh (2.2.1)
+    net-ssh-gateway (1.1.0)
+      net-ssh (>= 1.99.1)
     nifty-generators (0.4.6)
     nokogiri (1.4.4)
     orm_adapter (0.0.4)
@@ -168,10 +182,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  annotate!
+  annotate (~> 2.4.1.beta1)!
   autotest
   autotest-rails
   cancan (>= 1.6.7)
+  capistrano (>= 2.5.19)
   capybara (>= 0.4.1.2)
   cucumber-rails (>= 0.4.1)
   database_cleaner (>= 0.6.7)

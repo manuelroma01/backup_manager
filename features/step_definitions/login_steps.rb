@@ -1,4 +1,12 @@
 # Given -----------------------------------
+Given /^exists root:$/ do |table|
+  if Role.find_by_name('root').users.count == 0
+    table.hashes.each do |hash|
+      @admin = Factory(:user_root, hash)
+    end
+  end
+end
+
 Given /^exists users:$/ do |table|
   table.hashes.each do |hash|
     @user = Factory(:user, hash)

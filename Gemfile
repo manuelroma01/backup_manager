@@ -9,12 +9,13 @@ gem 'will_paginate', '>=3.0.pre2' # paginacion
 gem 'net-ping', '>=1.5.0'
 gem 'haml', '>=3.1.1' 
 gem 'formtastic', '>=1.2.3'
+gem 'capistrano', '>=2.5.19'
 
 
 group :development do
   gem 'nifty-generators'
   gem 'rspec-rails', '>= 2.6.1'
-  gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
+  gem 'annotate', '~> 2.4.1.beta1', :git => 'git://github.com/ctran/annotate_models.git'
 end
 
 group :test do

@@ -1,5 +1,6 @@
 class Equipment < ActiveRecord::Base
-  attr_accessible :tag, :equipment_type, :equipment_model, :ip_address, :mac_address, :location, :user
+  # acceso
+  attr_accessible :tag, :equipment_type, :equipment_model, :ip_address, :mac_address, :location, :equipment_user
   
   @ip_regex = /^([1-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(\.([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])){3}$/
   @mac_regex = /^([0-9a-fA-F]{2}[:-]){5}[0-9a-fA-F]{2}$/i
@@ -26,3 +27,20 @@ class Equipment < ActiveRecord::Base
     return find_ws.ping?
   end
 end
+
+# == Schema Information
+#
+# Table name: equipments
+#
+#  id              :integer         not null, primary key
+#  tag             :string(10)      not null
+#  equipment_type  :string(15)      not null
+#  equipment_model :string(30)
+#  ip_address      :string(15)      not null
+#  mac_address     :string(17)      not null
+#  location        :string(10)
+#  equipment_user  :string(15)
+#  created_at      :datetime
+#  updated_at      :datetime
+#
+

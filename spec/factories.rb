@@ -1,15 +1,25 @@
 require 'factory_girl'
+load(Rails.root.join("db", "seeds.rb"))
+
+@roleroot = Role.find_by_name('root')
+@roleuser = Role.find_by_name('user')
 
 # user random
 Factory.define :user do |u|
   u.sequence(:username) { |n| "testuser#{n}" }
   u.sequence(:email) { |n| "user#{n}@test.com" }
+  u.role @roleuser
   u.password 'porfaplis'
+end
+
+# user root
+Factory.define :user_root, :parent => :user do |u|
+  u.role @roleroot
 end
 
 # equipment random
 Factory.define :equipment do |e|
-  e.sequence(:tag) { |n| "tag#{n}" }
+  e.sequence(:tag) { |n| "IMW0#{n}" }
   e.equipment_type 'server'
   e.equipment_model 'notifixis'
   e.sequence(:ip_address) { |n| "#{(rand(220)+10)}.#{(rand(220)+10)}.#{(rand(220)+10)}.#{(rand(220)+10)}" }
