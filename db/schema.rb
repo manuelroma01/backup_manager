@@ -19,13 +19,13 @@ ActiveRecord::Schema.define(:version => 20111104163944) do
     t.string   "ip_address",      :limit => 15, :null => false
     t.string   "mac_address",     :limit => 17, :null => false
     t.string   "location",        :limit => 10
-    t.string   "user",            :limit => 20
+    t.string   "equipment_user",  :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "equipments", ["equipment_user"], :name => "index_equipments_on_equipment_user"
   add_index "equipments", ["tag"], :name => "index_equipments_on_tag"
-  add_index "equipments", ["user"], :name => "index_equipments_on_user"
 
   create_table "reserves", :force => true do |t|
     t.integer  "room_id",                      :null => false

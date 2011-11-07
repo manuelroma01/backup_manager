@@ -11,4 +11,6 @@ Feature: User management
     Given I am on the home page
     Then I should see "Equipments"
       And I should see "Users"
+      And I should see "Rooms"
+      And I should see "Reserves"
 

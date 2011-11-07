@@ -16,8 +16,9 @@ Feature: User management
   Scenario: Equipments - Grant
     Given I am on the home page
     Then I should see "Equipments"
+      And I should see "Rooms"
+      And I should see "Reserves"
   
   Scenario: Users - Deny
     Given I am on the home page
     Then I should not see "Users"
-

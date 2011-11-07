@@ -251,6 +251,11 @@ describe UsersController do
           delete :destroy, :id => @root
           response.should render_template('show')
         end
+        
+        it "should show en arror message" do 
+          delete :destroy, :id => @root
+          flash[:alert].should =~ /No se puede eliminar el usuario actual/
+        end
       end
       
       describe "success" do
@@ -263,17 +268,11 @@ describe UsersController do
             delete :destroy, :id => @user_delete
           end.should change(User, :count).by(-1)
         end
-        
-        it "should redirect to the users page" do
-          lambda do
-            delete :destroy, :id => @user_delete
-          end.should change(User, :count).by(-1)
-        end
-      end
       
-      it "should redirect to the users page" do
-        delete :destroy, :id => @user_delete
-        response.should redirect_to(users_path)
+        it "should redirect to the users page" do
+          delete :destroy, :id => @user_delete
+          response.should redirect_to(users_path)
+        end
       end
     end
       

@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   validates :username, :presence => true, :uniqueness => true,
     :length => { :maximum => 30 }
   validates :role_id, :presence => true
-  
+
   # metodos publicos
   def get_role
     if self.role
@@ -32,6 +32,7 @@ class User < ActiveRecord::Base
   def find_by_role(role_name)
     # por hacer
   end
+  
 end
 
 # == Schema Information
