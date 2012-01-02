@@ -52,33 +52,40 @@ puts ''
 # Rooms
 puts '-------------------------------------'
 puts 'Rooms'
-room_johnsnow = Room.create!(
-  :name => 'John Snow',
-  :location => 'Ground floor',
-  :comment => 'Sala John Snow'
+room_itaca = Room.create!(
+  :name => 'Itaca',
+  :location => 'Espai Rachel Carlson - Altell',
+  :comment => 'Sala de reunions'
 )
-puts "+ #{room_johnsnow.name}"
+puts "+ #{room_itaca.name}"
 
-room_other_1 = Room.create!(
-  :name => 'Other room place 1',
-  :location => 'Ground floor',
-  :comment => 'Sala X puesto 1'
+room_johnsnow_pica = Room.create!(
+  :name => 'John Snow Lab Pica',
+  :location => 'Espai John Snow',
+  :comment => 'Laboratori Pica'
 )
-puts "+ #{room_other_1.name}"
+puts "+ #{room_johnsnow_pica.name}"
 
-room_other_2 = Room.create!(
-  :name => 'Other room place 2',
-  :location => 'Ground floor',
-  :comment => 'Sala X puesto 2'
+room_johnsnow_cent = Room.create!(
+  :name => 'John Snow Lab Cent',
+  :location => 'Espai John Snow',
+  :comment => 'Laboratori Centrifugadora'
 )
-puts "+ #{room_other_2.name}"
+puts "+ #{room_johnsnow_cent.name}"
 
-room_other_3 = Room.create!(
-  :name => 'Other room place 3',
-  :location => 'Ground floor',
-  :comment => 'Sala X puesto 3'
+room_johnsnow_altre = Room.create!(
+  :name => 'John Snow Lab altre',
+  :location => 'Espai John Snow',
+  :comment => 'Laboratori altre'
 )
-puts "+ #{room_other_3.name}"
+puts "+ #{room_johnsnow_altre.name}"
+
+room_johnsnow_visitants = Room.create!(
+  :name => 'John Snow Visitants',
+  :location => 'Espai John Snow',
+  :comment => 'Sala Visitants'
+)
+puts "+ #{room_johnsnow_visitants.name}"
 
 puts '-------------------------------------'
 

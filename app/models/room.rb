@@ -10,5 +10,5 @@ class Room < ActiveRecord::Base
     :length => { :maximum => 20 },
     :uniqueness => true
   validates :location, :presence => true,
-    :length => { :maximum => 15 }
+    :length => { :maximum => 30 }
 end

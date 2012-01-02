@@ -2,11 +2,11 @@ require 'spec_helper'
 
 describe Reserve do
   before(:each) do
-    @room_johnsnow = Room.find_by_name('John Snow')
+    @room_johnsnow_v = Room.find_by_name('John Snow Visitants')
     @user = Factory(:user)
   
     @reserve_attr = {
-      :room_id => @room_johnsnow.id,
+      :room_id => @room_johnsnow_v.id,
       :user_id => @user.id,
       :reserve_start => '20/12/2011 10:00',
       :reserve_end => '20/12/2011 10:00',
@@ -43,7 +43,7 @@ describe Reserve do
     end
     
     it "user should be in users list" do
-      User.find(@reserve.user).should == @reserve.
+      User.find(@reserve.user).should == @reserve.user
     end
   end
   
