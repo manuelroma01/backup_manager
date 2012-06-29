@@ -10,12 +10,12 @@ gem 'net-ping', '>=1.5.0'
 gem 'haml', '>=3.1.1' 
 gem 'formtastic', '>=1.2.3'
 gem 'capistrano', '>=2.5.19'
-
+gem 'net-ssh'
 
 group :development do
   gem 'nifty-generators'
   gem 'rspec-rails', '>= 2.6.1'
-  gem 'annotate', '~> 2.4.1.beta1', :git => 'git://github.com/ctran/annotate_models.git'
+  gem 'annotate', '>= 2.5.0.pre1'
 end
 
 group :test do

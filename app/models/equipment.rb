@@ -17,7 +17,7 @@ class Equipment < ActiveRecord::Base
     :uniqueness => true,
     :format => { :with => @ip_regex }
   validates :mac_address, :presence => true,
-    :uniqueness => true,
+   :uniqueness => true,
     :format => { :with => @mac_regex }
   validates :location, :presence => true
     
@@ -25,6 +25,14 @@ class Equipment < ActiveRecord::Base
   def online?
     find_ws = Net::Ping::External.new(self.ip_address, timeout=1)
     return find_ws.ping?
+  end
+
+  def uname
+    #require 'net/ssh'
+    Net::SSH.start(self.ip_address, 'antaviana', :password => 'H1antaj0', :verbose => :debug) do |ssh|
+      response = ssh.exec!('uname -a')
+      return response
+    end
   end
 end
 
